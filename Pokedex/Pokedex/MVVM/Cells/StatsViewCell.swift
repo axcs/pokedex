@@ -25,7 +25,6 @@ class StatsViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
     var txtTitle: String? {
       didSet {
           statusLabel.text = txtTitle

@@ -52,7 +52,7 @@ extension String {
         var className = (fileName as NSString).lastPathComponent
         className = (className.replacingOccurrences(of: ".swift", with: ""))
         
-        print("🆘 [\(className).\(functionName) ErrorLine:\(lineNumber)] : \(self)")
+        print("⛔️ [\(className).\(functionName) ErrorLine:\(lineNumber)] : \(self)")
     }
     
     public func createDate(format: String) -> Date {

@@ -19,7 +19,6 @@ class ViewControllerUtil: UIViewController {
         return blurEffectView
     }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initObjs()
@@ -66,11 +65,22 @@ class ViewControllerUtil: UIViewController {
     }
     
     func showError(msg: String?) {
-           let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: msg ?? NSLocalizedString("DefaultErrorKey", comment: ""), preferredStyle: .alert)
-           
-           alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-           self.present(alert, animated: true)
-       }
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showMsg(msg: String?) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Aviso", message: msg, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 

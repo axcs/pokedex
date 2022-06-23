@@ -1,5 +1,5 @@
 //
-//  LayerEndPoints.swift
+//  ServicesEndPoints.swift
 //  Pokedex
 //
 //  Created by axavierc on 21/06/2022.
@@ -7,13 +7,11 @@
 
 import Foundation
 
-enum LayerEndPointsBuilderEnum{
+enum ServicesEndPointsEnum{
     
     //Add all endpoints here
     case getPokemonByID(ID : String)
     case getListPokemons(LIMITE: Int, OFFSET: Int)
-    
-//        https://pokeapi.co/api/v2/pokemon/?limit=15&offset=0)
     case putFavorite
     
     

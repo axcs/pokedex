@@ -25,7 +25,7 @@ class CommonListPokemon : CommonDataBaseModel, Codable{
 class Resultt: Codable {
     let name: String
     let url: String
-    var id: String?
+    var idAux: String?
 
     init(name: String, url: String) {
         self.name = name

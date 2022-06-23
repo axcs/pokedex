@@ -7,22 +7,24 @@
 import Foundation
 import CoreLocation
 
-struct PokemonsModel {
-    var idHome: String?
-    var pokemon : HomeInteractorPokemonModel?
+struct HomeModel {
+    var pokemon : HomeModelPokemonModel?
     var listPokemon : CommonListPokemon?
-  
-
 }
 
-class HomeInteractorPokemonModel {
-    var id : Int?
+class HomeModelPokemonModel {
+    var id : String?
+    var description : String?
     var name : String?
     var height : Int?
     var imageURL : String?
     
     init(cdlModel: CommonPokemonModel) {
-        self.id = cdlModel.id
+        self.id = "\(cdlModel.id ?? 0)"
+        var descriptionText = "#"
+        let idStr = "\(cdlModel.id ?? 0)"
+        descriptionText += idStr.addzeros
+        self.description = descriptionText
         self.name = cdlModel.name
         self.height = cdlModel.height
         if let sprites = cdlModel.sprites {

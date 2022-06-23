@@ -1,15 +1,12 @@
 //
-//  CommonPokemon.swift
+//  ServiceManager.swift
 //  Pokedex
 //
 //  Created by axavierc on 21/06/2022.
 //
-
-//
-
 import Foundation
 import UIKit
-class CommonPokemon : BaseServices{
+class ServiceManager : BaseServices{
     
     let favoritePokemonList = "favoritePokemonList"
     
@@ -21,7 +18,7 @@ class CommonPokemon : BaseServices{
     
     func getListPokemons(limite: Int, offset: Int, subscriber: CommonDataSubscriber){
            
-        self.dataRequest(with: LayerEndPointsBuilderEnum.getListPokemons(LIMITE: limite, OFFSET: offset).endpoint, objectType: CommonListPokemon.self, httpMethod : .get){ (result: BaseResponse) in
+        self.dataRequest(with: ServicesEndPointsEnum.getListPokemons(LIMITE: limite, OFFSET: offset).endpoint, objectType: CommonListPokemon.self, httpMethod : .get){ (result: BaseResponse) in
                 switch result {
                 case .success(let modelToReturn):
                     if let model = modelToReturn{
@@ -54,7 +51,7 @@ class CommonPokemon : BaseServices{
             return
         }
         
-        self.dataRequest(with: LayerEndPointsBuilderEnum.getPokemonByID(ID: pokemonID).endpoint, objectType: CommonPokemonModel.self, httpMethod : .get){ (result: BaseResponse) in
+        self.dataRequest(with: ServicesEndPointsEnum.getPokemonByID(ID: pokemonID).endpoint, objectType: CommonPokemonModel.self, httpMethod : .get){ (result: BaseResponse) in
                 switch result {
                 case .success(let modelToReturn):
                     if let model = modelToReturn{
@@ -96,7 +93,7 @@ class CommonPokemon : BaseServices{
             let data = (json!.data(using: .utf8))! as Data
             
             if(save){
-                self.dataRequest(with: LayerEndPointsBuilderEnum.putFavorite.endpoint, objectType: CommonSavePokemonModel.self, httpMethod : .post, parameters: data){ (result: BaseResponse) in
+                self.dataRequest(with: ServicesEndPointsEnum.putFavorite.endpoint, objectType: CommonSavePokemonModel.self, httpMethod : .post, parameters: data){ (result: BaseResponse) in
                     switch result {
                     case .success(_):
                         

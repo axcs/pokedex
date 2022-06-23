@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class PokeCollectionViewCell: UICollectionViewCell {
-    
+    //MARK: - Outlets
     @IBOutlet weak var pokeTitleLabel: UILabel!
     @IBOutlet weak var pokeDescriptionLabel: UILabel!
     @IBOutlet weak var pokeCellBackgroundView: UIView!
@@ -21,13 +21,13 @@ class PokeCollectionViewCell: UICollectionViewCell {
     var favoriteStatus = false {
         didSet{
             if favoriteStatus {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.favoriteContainerView.backgroundColor = UIColor.red
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.favoriteContainerView.backgroundColor = UIColor(red: 0.8, green: 0.2, blue: 0.3, alpha: 1)
                     self.favoriteButton.tintColor = UIColor.white
                 })
                 
             }else{
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.favoriteContainerView.backgroundColor = UIColor.white
                     self.favoriteButton.tintColor = UIColor.black
                 })
@@ -68,24 +68,20 @@ class PokeCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
-        pokeCellBackgroundView.layer.cornerRadius = 10
-        
         // border
         pokeCellBackgroundView.layer.borderWidth = 1.0
         pokeCellBackgroundView.layer.borderColor = UIColor.black.cgColor
-        
-        // shadow
+        pokeCellBackgroundView.layer.cornerRadius = 10
+        // shadows
         pokeCellBackgroundView.layer.shadowColor = UIColor.black.cgColor
         pokeCellBackgroundView.layer.shadowOffset = CGSize(width: 5, height: 10)
         pokeCellBackgroundView.layer.shadowOpacity = 0.4
         pokeCellBackgroundView.layer.shadowRadius = 5.0
- 
+        
         favoriteContainerView.layer.shadowOpacity = 0.15
         favoriteContainerView.layer.shadowOffset = CGSize(width: .zero, height: 5)
         favoriteContainerView.layer.borderWidth = 0.5
         favoriteContainerView.layer.borderColor = UIColor.black.cgColor
-        
     }
 }
 
