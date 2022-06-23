@@ -29,19 +29,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon Name Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFO-Kc-9CH">
-                                <rect key="frame" x="20" y="195" width="218" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="aNm-IJ-CME"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="190" width="218" height="23"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7DH-sA-Kby">
-                                <rect key="frame" x="20" y="228" width="218" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="NVr-5P-80Q"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="218" width="218" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,13 +43,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7DH-sA-Kby" secondAttribute="bottom" constant="20" id="8oD-NJ-wAj"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7DH-sA-Kby" secondAttribute="bottom" constant="15" id="8oD-NJ-wAj"/>
                             <constraint firstAttribute="trailing" secondItem="AFO-Kc-9CH" secondAttribute="trailing" constant="20" id="Hsq-Gq-Jk8"/>
                             <constraint firstItem="bKJ-rO-6TV" firstAttribute="top" secondItem="Psl-h5-t48" secondAttribute="top" constant="5" id="P6F-bT-iPa"/>
                             <constraint firstAttribute="trailing" secondItem="7DH-sA-Kby" secondAttribute="trailing" constant="20" id="VSr-11-tqj"/>
                             <constraint firstItem="AFO-Kc-9CH" firstAttribute="leading" secondItem="Psl-h5-t48" secondAttribute="leading" constant="20" id="Vak-CL-5uX"/>
                             <constraint firstItem="7DH-sA-Kby" firstAttribute="leading" secondItem="Psl-h5-t48" secondAttribute="leading" constant="20" id="Zql-3k-TnN"/>
-                            <constraint firstItem="AFO-Kc-9CH" firstAttribute="top" secondItem="bKJ-rO-6TV" secondAttribute="bottom" constant="20" id="eID-Lb-X4y"/>
+                            <constraint firstItem="AFO-Kc-9CH" firstAttribute="top" secondItem="bKJ-rO-6TV" secondAttribute="bottom" constant="15" id="eID-Lb-X4y"/>
                             <constraint firstItem="bKJ-rO-6TV" firstAttribute="leading" secondItem="Psl-h5-t48" secondAttribute="leading" constant="44" id="qIJ-TN-mX5"/>
                             <constraint firstAttribute="trailing" secondItem="bKJ-rO-6TV" secondAttribute="trailing" constant="44" id="wTn-e5-Wwd"/>
                             <constraint firstItem="7DH-sA-Kby" firstAttribute="top" secondItem="AFO-Kc-9CH" secondAttribute="bottom" constant="5" id="x6K-KY-Vlv"/>
