@@ -53,6 +53,7 @@ class ViewControllerUtil: UIViewController {
         uitext?.frame =  CGRect(x: self.view.bounds.minX, y: self.view.bounds.minY + 60, width: self.view.bounds.width , height: self.view.bounds.height)
         blurEffectView.isHidden = false
         uitext?.isHidden = false
+        activityView?.center = self.view.center
         activityView?.startAnimating()
     }
 

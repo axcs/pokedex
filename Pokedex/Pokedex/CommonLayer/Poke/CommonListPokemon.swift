@@ -19,18 +19,16 @@ class CommonListPokemon : CommonDataBaseModel, Codable{
     override init() {
         //TODO
     }
-    
-    // MARK: - Result
-    class Resultt: Codable {
-        let name: String
-        let url: String
-        var id: String?
+}
 
-        init(name: String, url: String) {
-            self.name = name
-            self.url = url
-        }
+// MARK: - Result
+class Resultt: Codable {
+    let name: String
+    let url: String
+    var id: String?
+
+    init(name: String, url: String) {
+        self.name = name
+        self.url = url
     }
-
-    
 }

@@ -11,7 +11,9 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
     private let viewModel = HomeViewModel()
-    private var listaPoke: CommonListPokemon?
+    private var listaPoke: [Resultt] = []
+    private var pageRows:Int = 0          // var count Skip Page
+    private var isLoading:Bool = false   // var for loading state in load more
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +21,9 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
       
         
         self.showActivityIndicator()
-        self.viewModel.getAllPokemons(limit: 10, offset: 0) { sucess, response in
+        self.viewModel.getAllPokemons(limit: 10, offset: pageRows) { sucess, response in
             if sucess{
-                self.listaPoke = response
+                self.listaPoke = response?.results ?? []
                 DispatchQueue.main.async {
                 self.homeCollectionView.reloadData()
                     self.hideActivityIndicator()
@@ -45,20 +47,16 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
     
     // MARK: collectionview delegate functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let _ = listaPoke{
-            return listaPoke?.results?.count ?? 0
-        }
-        return 0
-    }
+        return listaPoke.count
+       }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "detailsPokeViewController") as! DetailsPokeViewController
-        if let pokemonObj = self.listaPoke?.results {
-            vc.idP = pokemonObj[indexPath.row].id
-        }
+        vc.idP = self.listaPoke[indexPath.row].id
+        
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
         
@@ -70,8 +68,8 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         let cell = collectionView.dequeueReusableCell(with: PokeCollectionViewCell.self, for: indexPath)
-        if let pokemonObj = self.listaPoke?.results {
-            let pokemon = pokemonObj[indexPath.row]
+     
+            let pokemon = self.listaPoke[indexPath.row]
             let name = pokemon.url
             let listItems = name.components(separatedBy: "/")
             self.viewModel.getPokemonInfo(index: listItems[6]) { sucess, response in
@@ -102,7 +100,7 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
                     cell.setup(pokemon: viewModel)
                 }
             }
-        }
+        
         return cell
         
     }
@@ -118,4 +116,49 @@ class HomeViewController: ViewControllerUtil, UICollectionViewDataSource, UIColl
     }
     
     
+    func loadMore(){
+        pageRows += 10
+        self.viewModel.getAllPokemons(limit: 10, offset: pageRows) { sucess, response in
+            if sucess{
+                self.listaPoke += response?.results ?? []
+                self.isLoading = false
+                DispatchQueue.main.async {
+                self.homeCollectionView.reloadData()
+                    self.hideActivityIndicator()
+            }
+            }
+        }
+        
+        
+        
+//        services.getChannelsList(skipPage: pageRows) {response in
+//            self.listChannels += response?.value ?? []
+//            self.isLoading = false
+//            DispatchQueue.main.async {
+//                self.listTableView.reloadWithAnimation()
+//                self.hideActivityIndicator()
+//            }
+//        }
+    }
+    
+    
+    
+}
+///MARK: - Scrollview Delegate
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if ((homeCollectionView.contentOffset.y + homeCollectionView.frame.size.height) >= homeCollectionView.contentSize.height)
+        {
+            if scrollView.contentOffset.y  > 0{
+                if isLoading == false {
+                    self.showActivityIndicator()
+                    isLoading = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                        self.loadMore()
+                    }
+                }
+            }
+        }
+    }
 }

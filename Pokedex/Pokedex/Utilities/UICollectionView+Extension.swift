@@ -57,6 +57,7 @@ extension UICollectionView {
         return dequeueReusableView(footer, kind: UICollectionView.elementKindSectionFooter, forIndexPath: indexPath)
     }
     
+
     private func dequeueReusableView<T:UICollectionReusableView>(_ view: T.Type, kind: String, forIndexPath indexPath: IndexPath) -> T {
         
         guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: view.nameOfClass, for: indexPath) as? T else {
@@ -73,3 +74,4 @@ extension UICollectionView {
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
     }
 }
+

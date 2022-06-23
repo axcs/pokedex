@@ -23,11 +23,14 @@ extension String {
     public var addzeros: String {
         let aux = 3 - count
         var str: String = ""
-        for _ in 1...aux {
-            str += "0"
+        if aux <= 0{
+            return self
+        }else {
+            for _ in 0...(aux-1){
+                str += "0"
+            }
+            return str + self
         }
-        
-        return str + self
     }
     
     //Log functions

@@ -141,7 +141,7 @@
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                 <color key="textColor" white="0.9109115082" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-r8-sb0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-r8-sb0">
                                 <rect key="frame" x="199" y="681" width="215" height="215"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oMe-r8-sb0" secondAttribute="height" multiplier="1:1" id="jGy-Zu-V2e"/>
@@ -159,7 +159,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.91091150815795063" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.91000000000000003" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MwX-5c-3Zz" secondAttribute="bottom" constant="5" id="C4d-Pd-oah"/>
                                     <constraint firstItem="MwX-5c-3Zz" firstAttribute="top" secondItem="hUG-3D-vFR" secondAttribute="top" constant="5" id="aBg-K9-bBt"/>
@@ -319,7 +319,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.9109115082" alpha="0.49806556954289116" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.9109115082" alpha="0.29642825095069331" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="026-XI-5AX" firstAttribute="top" secondItem="FDu-7a-bUL" secondAttribute="top" constant="10" id="SmJ-r7-Pd0"/>
                                     <constraint firstAttribute="bottom" secondItem="026-XI-5AX" secondAttribute="bottom" constant="5" id="TKA-Vv-1Ei"/>

@@ -46,10 +46,10 @@ class PokeCollectionViewCell: UICollectionViewCell {
         self.pokeDescriptionLabel.text = pokemon.description
         
         if let imgURL = pokemon.imageURL {
-            pokeImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            pokeImageView.sd_imageIndicator = SDWebImageActivityIndicator.large
             pokeImageView.sd_setImage(with: URL(string: imgURL))
         }else{
-            pokeImageView.image = UIImage(named: "poke_icon")
+            pokeImageView.image = UIImage(named: "background")
         }
         if(pokemon.favoriteAction == nil){
             self.favoriteContainerView.alpha = 0
