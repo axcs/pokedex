@@ -10,6 +10,8 @@ import CoreLocation
 
 struct DetailsPokeModel {
     var pokemon : DetailsPokeModelPokemon?
+    var species : SpeciesModelPokemon?
+    var allPokemons :AllPokeModelPokemon?
 }
 
 class DetailsPokeModelPokemon {
@@ -56,3 +58,30 @@ class DetailsPokeModelPokemon {
     }
 }
 
+class AllPokeModelPokemon{
+    var results: [Resultt]?
+    
+    init(cdlModel: CommonListPokemon) {
+        self.results = cdlModel.results
+    }
+}
+
+class SpeciesModelPokemon {
+    var color: ColorData?
+    var flavorText: String?
+    
+    init(cdlModel: CommonPokemonSpecies) {
+        self.color = cdlModel.color
+        
+        let flavorTextEntries = cdlModel.flavorTextEntries
+        var flavorDesc = ""
+        for flavor in flavorTextEntries ?? [] {
+            if (flavor.version.name == "red"){
+                flavorDesc = flavor.flavorText
+            }
+        }
+        let fixStr1 = flavorDesc.replacingOccurrences(of: "\\f", with: " ", options: .regularExpression, range: nil)
+        let fixStr2 = fixStr1.replacingOccurrences(of: "\n", with: " ", options: .literal, range: nil)
+        self.flavorText = fixStr2
+    }
+}

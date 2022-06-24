@@ -11,14 +11,14 @@ import UIKit.UIImage
 public class DetailsPokeViewModel {
     var InteractorID = "HomeInteractor"
     let serviceManager = ServiceManager()
-    let listPokemon = Box(CommonListPokemon())
-
+    var dtModel = DetailsPokeModel()
+    
     init() {
         
     }
     
-    func getPokemonInfo(index: String, completion: @escaping(_ success: Bool, _ response: DetailsPokeModel?)-> Void){
-        self.serviceManager.getPokemonByID(pokemonID: index, subscriber: (self.InteractorID, { ( response: BaseResponse? ) -> Void in
+    func getPokemonInfo(id: String, completion: @escaping(_ success: Bool, _ response: DetailsPokeModel?)-> Void){
+        self.serviceManager.getPokemonByID(pokemonID: id, subscriber: (self.InteractorID, { ( response: BaseResponse? ) -> Void in
                 if let response = response {
                 switch response {
                 case .failure(_):
@@ -40,8 +40,35 @@ public class DetailsPokeViewModel {
             }
         }))
     }
+    
+    
+    func getPokemonSpecies(id: String, completion: @escaping(_ success: Bool, _ response: DetailsPokeModel?)-> Void){
+        self.serviceManager.getPokemonSpecies(pokemonID: id, subscriber: (self.InteractorID, { ( response: BaseResponse? ) -> Void in
+                if let response = response {
+                switch response {
+                case .failure(_):
+                    "getPokemonSpecies responded with failure".errorLog()
+                    completion(false, nil)
+                    break
+                case .success(let model):
+                    if let model = model as? CommonPokemonSpecies {
+                        self.dtModel.species = SpeciesModelPokemon(cdlModel: model)
+                        completion(true, self.dtModel)
+                        return
+                    }
+                    "no pokemon Found".errorLog()
+                    completion(false, nil)
+                    return
+                }
+            }
+        }))
+    }
+    
+    
+    
+    
 
-    func getAllPokemons(limit: Int, offset: Int ,completion: @escaping(_ sucess: Bool, _ response: CommonListPokemon?)-> Void){
+    func getAllPokemons(limit: Int, offset: Int ,completion: @escaping(_ sucess: Bool, _ response: DetailsPokeModel?)-> Void){
         self.serviceManager.getListPokemons(limite: limit, offset: offset, subscriber: (self.InteractorID, { ( response: BaseResponse? ) -> Void in
             
             if let response = response {
@@ -52,8 +79,8 @@ public class DetailsPokeViewModel {
                     break
                 case .success(let model):
                     if let models = model as? CommonListPokemon {
-                        completion(true, models)
-                        self.listPokemon.value = models
+                        self.dtModel.allPokemons = AllPokeModelPokemon(cdlModel: models)
+                        completion(true, self.dtModel)
                         return
                     }
                     completion(false, nil)

@@ -8,11 +8,13 @@
 import UIKit
 import SDWebImage
 
-class DetailsPokeViewController: UIViewController{
+class DetailsPokeViewController: ViewControllerUtil{
     
     //MARK: - Outlets
     @IBOutlet weak var pokeViewImg: UIView!
     @IBOutlet weak var pokeImageView: UIImageView!
+    @IBOutlet weak var numberLB: UILabel!
+    @IBOutlet weak var numberLBtxt: UILabel!
     @IBOutlet weak var nameTxt: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var pokeInfo: UIView!
@@ -22,22 +24,24 @@ class DetailsPokeViewController: UIViewController{
     @IBOutlet weak var weightLBtxt: UILabel!
     @IBOutlet weak var typeLB: UILabel!
     @IBOutlet weak var typeLBtxt: UILabel!
+    @IBOutlet weak var descLb: UILabel!
     @IBOutlet weak var statusTableView: UITableView!
-
+    
     //MARK: - Var
     private let detailCellIdentifier = "statsViewCell"
     private let headerCellIdentifier = "headerStatsViewCell"
     private var status: [CDLStatsModel]?
     private let viewModel = DetailsPokeViewModel()
     private var pokeID: String!
- 
+    
     var idP: String? {
-      didSet {
-          pokeID = idP
-      }
+        didSet {
+            pokeID = idP
+        }
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadInfoForView()
         tableLoad()
@@ -70,7 +74,7 @@ class DetailsPokeViewController: UIViewController{
         pokeViewImg.layer.shadowOffset = CGSize(width: 6, height: 10)
         pokeViewImg.layer.shadowOpacity = 0.4
         pokeViewImg.layer.shadowRadius = 5.0
- 
+        
         //pokeInfo Layout
         // border
         pokeInfo.layer.borderWidth = 1.2
@@ -85,23 +89,39 @@ class DetailsPokeViewController: UIViewController{
     }
     
     func loadSerices(){
-        self.viewModel.getPokemonInfo(index: pokeID) { success, response in
-            self.nameTxt.text = response?.pokemon?.name
-            self.heightLBtxt.text = response?.pokemon?.weight
-            self.weightLBtxt.text = response?.pokemon?.height
-            self.status = response?.pokemon?.stats
-            self.statusTableView.reloadData()
-            self.typeLBtxt.text = response?.pokemon?.types
-
-            if let imgURL = response?.pokemon?.imageURL {
-                self.pokeImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-                self.pokeImageView.sd_setImage(with: URL(string: imgURL))
-            }else{
-                self.pokeImageView.image = UIImage(named: "poke_icon")
+        self.showActivityIndicator()   // Show spinner loading
+        
+        self.viewModel.getPokemonInfo(id: pokeID) { success, response in
+            if success {
+                self.numberLBtxt.text = response?.pokemon?.description
+                self.nameTxt.text = response?.pokemon?.name
+                self.heightLBtxt.text = response?.pokemon?.weight
+                self.weightLBtxt.text = response?.pokemon?.height
+                self.status = response?.pokemon?.stats
+                self.statusTableView.reloadData()
+                self.typeLBtxt.text = response?.pokemon?.types
+                if let imgURL = response?.pokemon?.imageURL {
+                    self.pokeImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+                    self.pokeImageView.sd_setImage(with: URL(string: imgURL))
+                }else{
+                    self.pokeImageView.image = UIImage(named: "pokebola")
+                }
+            }
+            else {
+                "Erro getPokemonInfo".errorLog()
+            }
+            
+            self.viewModel.getPokemonSpecies(id: self.pokeID) { success, response in
+                if success {
+                    let pokemonFlavor = response?.species?.flavorText
+                    DispatchQueue.main.async {
+                        self.descLb.text = pokemonFlavor
+                        self.hideActivityIndicator()   // hide spinner loading
+                    }
+                }
             }
         }
     }
-    
     
     //MARK: -  IbActions Btn
     @IBAction func btnCloseAction(_ sender: Any) {

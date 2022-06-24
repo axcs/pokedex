@@ -38,9 +38,32 @@ class ServiceManager : BaseServices{
                     break
                 }
         }
-        
-   
     }
+    
+    func getPokemonSpecies(pokemonID: String, subscriber: CommonDataSubscriber){
+        self.dataRequest(with: ServicesEndPointsEnum.getPokemonSpecies(ID: pokemonID).endpoint, objectType: CommonPokemonSpecies.self, httpMethod : .get){ (result: BaseResponse) in
+                switch result {
+                case .success(let modelToReturn):
+                    if let model = modelToReturn{
+                        let response = BaseResponse.success(model as CommonDataBaseModel)
+//                        CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
+                        subscriber.1(response)
+                    }else{
+                        let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+                        subscriber.1(response)
+                        break
+                    }
+                    break
+                case .failure(let error):
+//                    "failed with error \(error)".errorLog()
+                    let response = BaseResponse<CommonDataBaseModel>.failure(error)
+                    subscriber.1(response)
+                    break
+                }
+        }
+        
+    }
+    
     
     func getPokemonByID(pokemonID: String, subscriber: CommonDataSubscriber){
        
