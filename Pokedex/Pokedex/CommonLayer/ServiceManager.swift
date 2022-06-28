@@ -12,7 +12,7 @@ class ServiceManager : BaseServices{
     
     override init() {
         super.init()
-        cacheID = "CDLPokemon"
+        cacheID = "ServicePokemon"
     }
     
     
@@ -26,7 +26,7 @@ class ServiceManager : BaseServices{
 //                        CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
                         subscriber.1(response)
                     }else{
-                        let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+                        let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
                         subscriber.1(response)
                         break
                     }
@@ -49,7 +49,7 @@ class ServiceManager : BaseServices{
 //                        CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
                         subscriber.1(response)
                     }else{
-                        let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+                        let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
                         subscriber.1(response)
                         break
                     }
@@ -82,7 +82,7 @@ class ServiceManager : BaseServices{
                         CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
                         subscriber.1(response)
                     }else{
-                        let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+                        let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
                         subscriber.1(response)
                         break
                     }
@@ -102,7 +102,7 @@ class ServiceManager : BaseServices{
             let response = BaseResponse.success(favoriteList as CommonDataBaseModel)
             subscriber.1(response)
         }else{
-            let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+            let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
             subscriber.1(response)
         }
         
@@ -156,7 +156,7 @@ class ServiceManager : BaseServices{
                     let response = BaseResponse.success(cdlSavePokemonModel as CommonDataBaseModel)
                     subscriber.1(response)
                 }else{
-                    let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.noDataError)
+                    let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
                     subscriber.1(response)
                 }
             }
@@ -164,7 +164,7 @@ class ServiceManager : BaseServices{
             
             
         }catch{
-            let response = BaseResponse<CommonDataBaseModel>.failure(CDLErrorType.invalidParameters)
+            let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.invalidParameters)
             subscriber.1(response)
         }
 

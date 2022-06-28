@@ -14,8 +14,8 @@ class CommonPokemonModel : CommonDataBaseModel, Codable{
     var id : Int?
     var name : String?
     var height : Int?
-    var stats : [CDLStatsModel]?
-    var sprites : CDLspritesModel?
+    var stats : [StatsModel]?
+    var sprites : SpritesModel?
     var weight : Int?
     var types : [TypeElement]?
     
@@ -36,10 +36,10 @@ class CommonPokemonModel : CommonDataBaseModel, Codable{
     
 }
 
-class CDLStatsModel: CommonDataBaseModel, Codable {
+class StatsModel: CommonDataBaseModel, Codable {
     var base_stat : Int?
     var effort : Int?
-    var stat :CDLStatDescriptionModel?
+    var stat :StatDescriptionModel?
     
     //enum to match model properties and JSON names
     enum CodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ class CDLStatsModel: CommonDataBaseModel, Codable {
     }
 }
 
-class CDLStatDescriptionModel: CommonDataBaseModel, Codable {
+class StatDescriptionModel: CommonDataBaseModel, Codable {
     var name : String?
     var url : String?
     
@@ -60,10 +60,10 @@ class CDLStatDescriptionModel: CommonDataBaseModel, Codable {
     }
 }
 
-class CDLspritesModel: CommonDataBaseModel, Codable  {
+class SpritesModel: CommonDataBaseModel, Codable  {
     var back_default : String?
     var front_default : String?
-    var other : CDLSpritesOtherModel?
+    var other : SpritesOtherModel?
     
     //enum to match model properties and JSON names
     enum CodingKeys: String, CodingKey {
@@ -73,9 +73,9 @@ class CDLspritesModel: CommonDataBaseModel, Codable  {
     }
 }
 
-class CDLSpritesOtherModel: CommonDataBaseModel, Codable {
-    var officialartwork : CDLSpritesOtherOfficialartworkModel?
-    var home : CDLSpritesOtherOfficialartworkModel?
+class SpritesOtherModel: CommonDataBaseModel, Codable {
+    var officialartwork : SpritesOtherOfficialartworkModel?
+    var home : SpritesOtherOfficialartworkModel?
     
     //enum to match model properties and JSON names
     enum CodingKeys: String, CodingKey {
@@ -84,7 +84,7 @@ class CDLSpritesOtherModel: CommonDataBaseModel, Codable {
     }
 }
 
-class CDLSpritesOtherOfficialartworkModel: CommonDataBaseModel, Codable {
+class SpritesOtherOfficialartworkModel: CommonDataBaseModel, Codable {
     var front_default : String?
     
     //enum to match model properties and JSON names

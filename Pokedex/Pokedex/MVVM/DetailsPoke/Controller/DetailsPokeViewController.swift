@@ -30,7 +30,7 @@ class DetailsPokeViewController: ViewControllerUtil{
     //MARK: - Var
     private let detailCellIdentifier = "statsViewCell"
     private let headerCellIdentifier = "headerStatsViewCell"
-    private var status: [CDLStatsModel]?
+    private var status: [StatsModel]?
     private let viewModel = DetailsPokeViewModel()
     private var pokeID: String!
     

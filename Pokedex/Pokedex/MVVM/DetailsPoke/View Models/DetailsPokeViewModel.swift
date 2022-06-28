@@ -29,7 +29,7 @@ public class DetailsPokeViewModel {
                     if let model = model as? CommonPokemonModel {
                         
                         var dtModel = DetailsPokeModel()
-                        dtModel.pokemon = DetailsPokeModelPokemon(cdlModel: model)
+                        dtModel.pokemon = DetailsPokeModelPokemon(cmumModel: model)
                         completion(true, dtModel)
                         return
                     }
@@ -52,7 +52,7 @@ public class DetailsPokeViewModel {
                     break
                 case .success(let model):
                     if let model = model as? CommonPokemonSpecies {
-                        self.dtModel.species = SpeciesModelPokemon(cdlModel: model)
+                        self.dtModel.species = SpeciesModelPokemon(cmumModel: model)
                         completion(true, self.dtModel)
                         return
                     }
@@ -79,7 +79,7 @@ public class DetailsPokeViewModel {
                     break
                 case .success(let model):
                     if let models = model as? CommonListPokemon {
-                        self.dtModel.allPokemons = AllPokeModelPokemon(cdlModel: models)
+                        self.dtModel.allPokemons = AllPokeModelPokemon(cmumModel: models)
                         completion(true, self.dtModel)
                         return
                     }

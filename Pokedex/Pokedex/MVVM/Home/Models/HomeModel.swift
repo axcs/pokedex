@@ -17,17 +17,19 @@ class HomeModelPokemonModel {
     var description : String?
     var name : String?
     var height : Int?
+    var weight : Int?
     var imageURL : String?
     
-    init(cdlModel: CommonPokemonModel) {
-        self.id = "\(cdlModel.id ?? 0)"
+    init(cmumModel: CommonPokemonModel) {
+        self.id = "\(cmumModel.id ?? 0)"
         var descriptionText = "#"
-        let idStr = "\(cdlModel.id ?? 0)"
+        let idStr = "\(cmumModel.id ?? 0)"
         descriptionText += idStr.addzeros
         self.description = descriptionText
-        self.name = cdlModel.name
-        self.height = cdlModel.height
-        if let sprites = cdlModel.sprites {
+        self.name = cmumModel.name
+        self.height = cmumModel.height
+        self.weight = cmumModel.weight
+        if let sprites = cmumModel.sprites {
             if let sprite = sprites.other{
                 self.imageURL = sprite.officialartwork?.front_default
             }else{

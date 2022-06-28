@@ -29,7 +29,6 @@
 		B476B7382863031D0007A1DB /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B72E2863031D0007A1DB /* ServiceManager.swift */; };
 		B476B7392863031D0007A1DB /* BaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B72F2863031D0007A1DB /* BaseServices.swift */; };
 		B476B73A2863031D0007A1DB /* ServicesEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B7302863031D0007A1DB /* ServicesEndPoints.swift */; };
-		B476B73D2863062F0007A1DB /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B73C2863062F0007A1DB /* Box.swift */; };
 		B476B74128630A280007A1DB /* PokeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B73F28630A280007A1DB /* PokeCollectionViewCell.swift */; };
 		B476B74628630DDF0007A1DB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B74328630DDF0007A1DB /* String+Extension.swift */; };
 		B476B74728630DDF0007A1DB /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */; };
@@ -99,7 +98,6 @@
 		B476B72E2863031D0007A1DB /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		B476B72F2863031D0007A1DB /* BaseServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServices.swift; sourceTree = "<group>"; };
 		B476B7302863031D0007A1DB /* ServicesEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesEndPoints.swift; sourceTree = "<group>"; };
-		B476B73C2863062F0007A1DB /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		B476B73F28630A280007A1DB /* PokeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B476B74328630DDF0007A1DB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 				B476B74328630DDF0007A1DB /* String+Extension.swift */,
 				B4DE52EA2863AC5D00565563 /* UITableView+Extension.swift */,
 				B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */,
-				B476B73C2863062F0007A1DB /* Box.swift */,
 				B4DE52F42864919300565563 /* ViewControllerUtil.swift */,
 				B4FF6D8E2865B167008D16F9 /* SelfSizedTableView.swift */,
 			);
@@ -609,7 +606,6 @@
 				B437C9722861FA9800361D78 /* AppDelegate.swift in Sources */,
 				B476B7362863031D0007A1DB /* CommonSavePokemonModel.swift in Sources */,
 				B476B7322863031D0007A1DB /* BaseResponse.swift in Sources */,
-				B476B73D2863062F0007A1DB /* Box.swift in Sources */,
 				B476B7372863031D0007A1DB /* CommonPokemonModel.swift in Sources */,
 				B476B74728630DDF0007A1DB /* UICollectionView+Extension.swift in Sources */,
 				B476B74128630A280007A1DB /* PokeCollectionViewCell.swift in Sources */,

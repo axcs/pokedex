@@ -36,8 +36,8 @@ class CommonData {
     // notification will send the CommonDataLayerBaseModel
     func subscribe(cacheID: String, subscriber : CommonDataSubscriber){
         if let notificationList = commonDataNotificationList[cacheID] {
-            if(notificationList.contains(where: { ( _ cdlSubscriber : CommonDataSubscriber) -> Bool in
-                return cdlSubscriber.0 == subscriber.0
+            if(notificationList.contains(where: { ( _ comumSubscriber : CommonDataSubscriber) -> Bool in
+                return comumSubscriber.0 == subscriber.0
             })){
                 // is already in the subcstiption list
                 return
@@ -50,8 +50,8 @@ class CommonData {
     }
     
     func unsubcribe(cacheID : String, subscriberID: String){
-        commonDataNotificationList[cacheID]?.removeAll(where: { ( _ cdlSubscriber : CommonDataSubscriber) -> Bool in
-            return cdlSubscriber.0 == subscriberID
+        commonDataNotificationList[cacheID]?.removeAll(where: { ( _ comumSubscriber : CommonDataSubscriber) -> Bool in
+            return comumSubscriber.0 == subscriberID
         })
     }
     

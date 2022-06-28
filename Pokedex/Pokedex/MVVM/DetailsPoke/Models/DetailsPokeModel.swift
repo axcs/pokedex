@@ -22,33 +22,33 @@ class DetailsPokeModelPokemon {
     var weight : String?
     var imageURL : String?
     var types : String?
-    var stats : [CDLStatsModel]?
+    var stats : [StatsModel]?
     
     
-    init(cdlModel: CommonPokemonModel) {
-        self.id = "\(cdlModel.id ?? 0)"
+    init(cmumModel: CommonPokemonModel) {
+        self.id = "\(cmumModel.id ?? 0)"
         var descriptionText = "#"
-        let idStr = "\(cdlModel.id ?? 0)"
+        let idStr = "\(cmumModel.id ?? 0)"
         descriptionText += idStr.addzeros
         self.description = descriptionText
-        self.name = cdlModel.name?.firstCapitalized
+        self.name = cmumModel.name?.firstCapitalized
         
-        let weightAux = Double(cdlModel.weight ?? 0)
-        let heightAux = Double(cdlModel.height ?? 0)
+        let weightAux = Double(cmumModel.weight ?? 0)
+        let heightAux = Double(cmumModel.height ?? 0)
  
         self.height = "\(heightAux / 10.0) m"
         self.weight = "\(weightAux / 10.0) kg"
 
-        self.stats = cdlModel.stats
+        self.stats = cmumModel.stats
         
         var typesAux: String = ""
-        for item in cdlModel.types ?? [] {
+        for item in cmumModel.types ?? [] {
             typesAux += (item.type?.name)?.firstCapitalized ?? ""
             typesAux += "; "
         }
         self.types = typesAux
         
-        if let sprites = cdlModel.sprites {
+        if let sprites = cmumModel.sprites {
             if let sprite = sprites.other{
                 self.imageURL = sprite.officialartwork?.front_default
             }else{
@@ -61,8 +61,8 @@ class DetailsPokeModelPokemon {
 class AllPokeModelPokemon{
     var results: [Resultt]?
     
-    init(cdlModel: CommonListPokemon) {
-        self.results = cdlModel.results
+    init(cmumModel: CommonListPokemon) {
+        self.results = cmumModel.results
     }
 }
 
@@ -70,10 +70,10 @@ class SpeciesModelPokemon {
     var color: ColorData?
     var flavorText: String?
     
-    init(cdlModel: CommonPokemonSpecies) {
-        self.color = cdlModel.color
+    init(cmumModel: CommonPokemonSpecies) {
+        self.color = cmumModel.color
         
-        let flavorTextEntries = cdlModel.flavorTextEntries
+        let flavorTextEntries = cmumModel.flavorTextEntries
         var flavorDesc = ""
         for flavor in flavorTextEntries ?? [] {
             if (flavor.version.name == "red"){

@@ -16,7 +16,7 @@ class BaseServices {
     func dataRequest<T: Decodable>(with url: String, objectType: T.Type, httpMethod : httpMethod = .get, parameters : Data? = nil, completion: @escaping (BaseResponse<T>) -> Void) {
         
         guard let requestURL = URL(string: url) else{
-            completion(BaseResponse.failure(CDLErrorType.invalidURLError))
+            completion(BaseResponse.failure(ErrorType.invalidURLError))
             return
         }
         let session = URLSession.shared
@@ -33,11 +33,11 @@ class BaseServices {
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
                 //It's safe to unwrap
-                completion(BaseResponse.failure(CDLErrorType.networkError(error!)))
+                completion(BaseResponse.failure(ErrorType.networkError(error!)))
                 return
             }
             guard let data = data else {
-                completion(BaseResponse.failure(CDLErrorType.noDataError))
+                completion(BaseResponse.failure(ErrorType.noDataError))
                 return
             }
             if let httpResponse = response as? HTTPURLResponse{
@@ -49,7 +49,7 @@ class BaseServices {
                             completion(BaseResponse.success(decodedObject))
                             return
                         } catch let error {
-                            completion(BaseResponse.failure(CDLErrorType.jsonParsingError(error as! DecodingError)))
+                            completion(BaseResponse.failure(ErrorType.jsonParsingError(error as! DecodingError)))
                         }
                     }else{
                         //Data is empty
@@ -57,10 +57,10 @@ class BaseServices {
                         return
                     }
                 }else{
-                    completion(BaseResponse.failure(CDLErrorType.serverErrorWithStatusCode(httpResponse.statusCode)))
+                    completion(BaseResponse.failure(ErrorType.serverErrorWithStatusCode(httpResponse.statusCode)))
                 }
             }else{
-                completion(BaseResponse.failure(CDLErrorType.noDataError))
+                completion(BaseResponse.failure(ErrorType.noDataError))
             }
         })
         task.resume()
@@ -79,7 +79,7 @@ enum httpMethod : String{
     //TODO: Add all httpMethods Here
 }
 
-enum CDLErrorType {
+enum ErrorType {
     case serverError
     case noDataError
     case networkError(Error)

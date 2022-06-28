@@ -11,7 +11,6 @@ import UIKit.UIImage
 public class HomeViewModel {
     var InteractorID = "HomeInteractor"
     let serviceManager = ServiceManager()
-    let listPokemon = Box(CommonListPokemon())
 
     init() {
         
@@ -29,7 +28,7 @@ public class HomeViewModel {
                     if let model = model as? CommonPokemonModel {
                         
                         var homeModel = HomeModel()
-                        homeModel.pokemon = HomeModelPokemonModel(cdlModel: model) 
+                        homeModel.pokemon = HomeModelPokemonModel(cmumModel: model) 
                         completion(true, homeModel)
                         return
                     }
@@ -54,7 +53,6 @@ public class HomeViewModel {
                 case .success(let model):
                     if let models = model as? CommonListPokemon {
                         completion(true, models)
-                        self.listPokemon.value = models
                         return
                     }
                     completion(false, nil)

@@ -9,5 +9,5 @@ import Foundation
 
 enum BaseResponse<T>{
     case success(T?)
-    case failure(CDLErrorType)
+    case failure(ErrorType)
 }
