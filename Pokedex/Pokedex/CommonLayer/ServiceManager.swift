@@ -23,7 +23,6 @@ class ServiceManager : BaseServices{
                 case .success(let modelToReturn):
                     if let model = modelToReturn{
                         let response = BaseResponse.success(model as CommonDataBaseModel)
-//                        CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
                         subscriber.1(response)
                     }else{
                         let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
@@ -32,7 +31,7 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-//                    "failed with error \(error)".errorLog()
+                    "failed with error \(error)".errorLog()
                     let response = BaseResponse<CommonDataBaseModel>.failure(error)
                     subscriber.1(response)
                     break
@@ -46,7 +45,6 @@ class ServiceManager : BaseServices{
                 case .success(let modelToReturn):
                     if let model = modelToReturn{
                         let response = BaseResponse.success(model as CommonDataBaseModel)
-//                        CommonData.shared.saveToCache(cacheID: pokemonID, model: model as CommonDataBaseModel)
                         subscriber.1(response)
                     }else{
                         let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)
@@ -55,7 +53,7 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-//                    "failed with error \(error)".errorLog()
+                    "failed with error \(error)".errorLog()
                     let response = BaseResponse<CommonDataBaseModel>.failure(error)
                     subscriber.1(response)
                     break
@@ -66,14 +64,6 @@ class ServiceManager : BaseServices{
     
     
     func getPokemonByID(pokemonID: String, subscriber: CommonDataSubscriber){
-       
-        if let pokemonModel = CommonData.shared.returnFromCache(cacheID: pokemonID){
-            //pokemon is saved in cache and will be reused
-            let response = BaseResponse.success(pokemonModel)
-            subscriber.1(response)
-            return
-        }
-        
         self.dataRequest(with: ServicesEndPointsEnum.getPokemonByID(ID: pokemonID).endpoint, objectType: CommonPokemonModel.self, httpMethod : .get){ (result: BaseResponse) in
                 switch result {
                 case .success(let modelToReturn):
@@ -88,7 +78,7 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-//                    "failed with error \(error)".errorLog()
+                    "failed with error \(error)".errorLog()
                     let response = BaseResponse<CommonDataBaseModel>.failure(error)
                     subscriber.1(response)
                     break
@@ -131,13 +121,13 @@ class ServiceManager : BaseServices{
                             CommonData.shared.saveToCache(cacheID: self.favoritePokemonList, model: favoriteList)
                         }
                         
-                        let cdlSavePokemonModel = CommonSavePokemonModel()
-                        cdlSavePokemonModel.success = true
-                        let response = BaseResponse.success(cdlSavePokemonModel as CommonDataBaseModel)
+                        let savePokemonModel = CommonSavePokemonModel()
+                        savePokemonModel.success = true
+                        let response = BaseResponse.success(savePokemonModel as CommonDataBaseModel)
                         subscriber.1(response)
                         break
                     case .failure(let error):
-//                        "failed with error \(error)".errorLog()
+                        "failed with error \(error)".errorLog()
                         let response = BaseResponse<CommonDataBaseModel>.failure(error)
                         subscriber.1(response)
                         break
@@ -151,9 +141,9 @@ class ServiceManager : BaseServices{
                     favoriteList.favoritePokemonIDList = newfavoriteList
                     CommonData.shared.saveToCache(cacheID: self.favoritePokemonList, model: favoriteList)
                     
-                    let cdlSavePokemonModel = CommonSavePokemonModel()
-                    cdlSavePokemonModel.success = true
-                    let response = BaseResponse.success(cdlSavePokemonModel as CommonDataBaseModel)
+                    let savePokemonModel = CommonSavePokemonModel()
+                    savePokemonModel.success = true
+                    let response = BaseResponse.success(savePokemonModel as CommonDataBaseModel)
                     subscriber.1(response)
                 }else{
                     let response = BaseResponse<CommonDataBaseModel>.failure(ErrorType.noDataError)

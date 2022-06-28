@@ -63,7 +63,9 @@ class PokeCollectionViewCell: UICollectionViewCell {
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
         favoriteStatus = !favoriteStatus
-        self.pokemon?.favoriteAction?(self.favoriteStatus, pokemon?.id ?? "")
+        if favoriteStatus {
+            self.pokemon?.favoriteAction?(self.favoriteStatus, pokemon?.id ?? "")
+        }
     }
     
     override func layoutSubviews() {

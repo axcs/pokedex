@@ -75,7 +75,7 @@ class ViewControllerUtil: UIViewController {
     
     func showMsg(msg: String?) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Aviso", message: msg, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Warning", message: msg, preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
