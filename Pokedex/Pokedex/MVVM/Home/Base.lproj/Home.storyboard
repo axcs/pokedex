@@ -5,8 +5,8 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,23 +19,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YT5-SP-Xe9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="95"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="97"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2N-0u-TgE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2N-0u-TgE">
                                         <rect key="frame" x="20" y="0.0" width="304" height="57"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="textColorTitles"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokebola" translatesAutoresizingMaskIntoConstraints="NO" id="AXA-hH-eOe">
-                                        <rect key="frame" x="334" y="5" width="60" height="50"/>
+                                        <rect key="frame" x="334" y="2" width="60" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kow-0T-jpg"/>
                                             <constraint firstAttribute="width" constant="60" id="zh8-h5-TMW"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Cox-Qf-KkE">
-                                        <rect key="frame" x="0.0" y="79" width="414" height="16"/>
+                                        <rect key="frame" x="0.0" y="81" width="414" height="16"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT5-IP-Uv4">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="6"/>
@@ -63,19 +63,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the pokemon you want to consult:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUw-e9-IZf">
                                         <rect key="frame" x="20" y="57" width="374" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="textColorTitles"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="backgroundHome"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AXA-hH-eOe" secondAttribute="trailing" constant="20" id="6Zo-8w-VRD"/>
                                     <constraint firstAttribute="trailing" secondItem="KUw-e9-IZf" secondAttribute="trailing" constant="20" id="AtT-DW-uwC"/>
-                                    <constraint firstAttribute="height" constant="95" id="FHX-0j-OWA"/>
+                                    <constraint firstAttribute="height" constant="97" id="FHX-0j-OWA"/>
                                     <constraint firstItem="KUw-e9-IZf" firstAttribute="top" secondItem="g2N-0u-TgE" secondAttribute="bottom" id="G59-n5-ea2"/>
                                     <constraint firstAttribute="trailing" secondItem="Cox-Qf-KkE" secondAttribute="trailing" id="PmV-hC-blT"/>
                                     <constraint firstItem="AXA-hH-eOe" firstAttribute="leading" secondItem="g2N-0u-TgE" secondAttribute="trailing" constant="10" id="c8J-Co-H1Y"/>
-                                    <constraint firstItem="AXA-hH-eOe" firstAttribute="top" secondItem="YT5-SP-Xe9" secondAttribute="top" constant="5" id="d6D-8U-wfk"/>
+                                    <constraint firstItem="AXA-hH-eOe" firstAttribute="top" secondItem="YT5-SP-Xe9" secondAttribute="top" constant="2" id="d6D-8U-wfk"/>
                                     <constraint firstItem="KUw-e9-IZf" firstAttribute="leading" secondItem="YT5-SP-Xe9" secondAttribute="leading" constant="20" id="iBg-i4-rq7"/>
                                     <constraint firstItem="g2N-0u-TgE" firstAttribute="top" secondItem="YT5-SP-Xe9" secondAttribute="top" id="jzj-fX-EtB"/>
                                     <constraint firstItem="g2N-0u-TgE" firstAttribute="leading" secondItem="YT5-SP-Xe9" secondAttribute="leading" constant="20" id="m9L-Qy-IH4"/>
@@ -84,8 +84,8 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QkV-75-S8d">
-                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
-                                <color key="backgroundColor" white="0.94740087807583973" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="141" width="374" height="755"/>
+                                <color key="backgroundColor" name="backgroundHome"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iWK-wN-n8l">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -96,15 +96,15 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UvT-UZ-lrB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundHome"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="QkV-75-S8d" secondAttribute="bottom" id="EIJ-jS-ILI"/>
                             <constraint firstItem="YT5-SP-Xe9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EuG-5a-vpt"/>
-                            <constraint firstItem="QkV-75-S8d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FZP-Ny-Szu"/>
+                            <constraint firstItem="QkV-75-S8d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="FZP-Ny-Szu"/>
                             <constraint firstAttribute="trailing" secondItem="YT5-SP-Xe9" secondAttribute="trailing" id="KOf-mr-FH9"/>
                             <constraint firstItem="QkV-75-S8d" firstAttribute="top" secondItem="YT5-SP-Xe9" secondAttribute="bottom" id="axA-tt-ff2"/>
                             <constraint firstItem="UvT-UZ-lrB" firstAttribute="top" secondItem="YT5-SP-Xe9" secondAttribute="top" id="dde-A9-eUz"/>
-                            <constraint firstAttribute="trailing" secondItem="QkV-75-S8d" secondAttribute="trailing" id="hGM-Uv-193"/>
+                            <constraint firstAttribute="trailing" secondItem="QkV-75-S8d" secondAttribute="trailing" constant="20" id="hGM-Uv-193"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Foc-4X-ZFb"/>
@@ -384,7 +384,7 @@
                                                         </constraints>
                                                     </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="384" placeholderIntrinsicHeight="450" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="32" estimatedRowHeight="-1" sectionHeaderHeight="35" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iXX-gu-QMO" customClass="SelfSizedTableView" customModule="Pokedex" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="379" width="384" height="560"/>
+                                                        <rect key="frame" x="15" y="379" width="384" height="617"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.062278899135968541" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerStatsViewCell" rowHeight="35" id="fOQ-Gg-3Mq">
@@ -476,7 +476,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Air-WD-Rsj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundHome"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oMe-r8-sb0" secondAttribute="trailing" id="1qk-fF-4VK"/>
                             <constraint firstItem="QEg-zq-3SV" firstAttribute="centerY" secondItem="ZJ3-5P-jHo" secondAttribute="centerY" id="8ZP-3e-Q3d"/>
@@ -526,8 +526,11 @@
         <image name="background" width="179.5" height="178.5"/>
         <image name="close" width="492" height="505"/>
         <image name="pokebola" width="579" height="578"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="backgroundHome">
+            <color red="0.96004739507928594" green="0.95540948495813005" blue="0.96468530520044193" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColorTitles">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

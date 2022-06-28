@@ -28,12 +28,13 @@ class PokeCollectionViewCell: UICollectionViewCell {
                 
             }else{
                 UIView.animate(withDuration: 0.5, animations: {
-                    self.favoriteContainerView.backgroundColor = UIColor.white
+                    self.favoriteContainerView.backgroundColor = UIColor(named: "favoritebtn")
                     self.favoriteButton.tintColor = UIColor.black
                 })
             }
         }
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
