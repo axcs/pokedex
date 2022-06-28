@@ -14,6 +14,7 @@ The api that powers this entire application is the: https://pokeapi.co/
 - To ensure this app is used by a bigger audience all screens are compatible not only in portrait mode but also in ladscape mode for iOS and iPadOS.
 - Bug Constrains in Details Pokemon
 - This app has paginated information using infinite scroll mode
+- This apps use the Cocoapod SDWebImage. The use of these is free under the MIT licencing model.
 - The webhook.site url used in this solution is: https://webhook.site/9e4082e7-56c1-496e-9f8f-a4f13996745d
 
 
