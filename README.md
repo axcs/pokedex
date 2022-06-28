@@ -23,5 +23,5 @@ The api that powers this entire application is the: https://pokeapi.co/
 ### App preview - Dark Mode 
 ![App](./screenshots/2.png)
 
-### Tablet Mode
+### Ipad Mode
 <img src="./screenshots/3.png" align="center" width="50%"/>
