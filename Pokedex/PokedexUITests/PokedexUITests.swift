@@ -22,13 +22,44 @@ class PokedexUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testInfinitScroll() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let collectionViewsQuery = app.collectionViews
+        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element
+        element.swipeUp()
+        
+        let element2 = collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element
+        element2.swipeUp()
+        
+        let verticalScrollBar5PagesCollectionView = app/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 5 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 5 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        verticalScrollBar5PagesCollectionView.swipeUp()
+        element2.swipeUp()
+        verticalScrollBar5PagesCollectionView.swipeUp()
+        let verticalScrollBar10PagesCollectionView = app/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 10 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 10 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        verticalScrollBar10PagesCollectionView.swipeUp()
+        verticalScrollBar10PagesCollectionView.swipeUp()
+        element.swipeUp()
+    }
+    
+    func testClickDetailsAndClose() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element(boundBy: 0).tap()
+        let closeButton = app.buttons["close"]
+        closeButton.tap()
+    }
+    
+    
+    func testClickFavorite() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).buttons["love"].tap()
+        app.alerts["Warning"].scrollViews.otherElements.buttons["OK"].tap()
     }
 
     func testLaunchPerformance() throws {
