@@ -42,7 +42,7 @@ class DetailsPokeViewController: ViewControllerUtil{
         // Do any additional setup after loading the view.
         loadInfoForView()
         tableLoad()
-        loadSerices()
+        loadServices()
     }
     
     
@@ -63,12 +63,12 @@ class DetailsPokeViewController: ViewControllerUtil{
         btnClose.layer.shadowRadius = 5.0
     }
     
-    func loadSerices(){
+    func loadServices(){
         self.showActivityIndicator()   // Show spinner loading
-        
+        var namePoke: String = ""
         self.viewModel.getPokemonInfo(id: pokeID) { success, response in
             if success {
-                self.nameTxt.text = response?.pokemon?.name
+                
                 self.status = response?.pokemon?.stats
                 
                 let numberObj = DescValueObj(desc: "Number", value: response?.pokemon?.description ?? "")
@@ -82,6 +82,7 @@ class DetailsPokeViewController: ViewControllerUtil{
                 self.pokemonObj.append(typesObj)
                 
                 self.imgUrl = response?.pokemon?.imageURL ?? ""
+                namePoke = response?.pokemon?.name ?? ""
             }
             else {
                 "Erro getPokemonInfo".errorLog()
@@ -91,6 +92,7 @@ class DetailsPokeViewController: ViewControllerUtil{
                 if success {
                     
                     DispatchQueue.main.async {
+                        self.nameTxt.text = namePoke
                         self.descText = response?.species?.flavorText ?? ""
                         let typesObj = DescValueObj(desc: "Color", value: response?.species?.color?.name ?? "")
                         self.pokemonObj.append(typesObj)
@@ -123,7 +125,7 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if indexPath.section == 0 {
-            return 240
+            return 255
         } else {
             return 32
         }

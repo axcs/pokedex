@@ -45,6 +45,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.66666666669999997" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="descLabel" destination="V6F-oh-DzK" id="vYr-Ma-THt"/>
                 <outlet property="imageViewPoke" destination="p9i-UG-OH4" id="wCJ-RO-iyH"/>

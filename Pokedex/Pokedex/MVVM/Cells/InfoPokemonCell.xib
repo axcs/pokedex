@@ -17,16 +17,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-Bc-OF0">
-                        <rect key="frame" x="5" y="0.0" width="447" height="72"/>
+                        <rect key="frame" x="10" y="0.0" width="432" height="72"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoY-GE-sK8">
-                                <rect key="frame" x="0.0" y="0.0" width="242" height="72"/>
+                                <rect key="frame" x="0.0" y="0.0" width="227" height="72"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z2-aY-L5v">
-                                <rect key="frame" x="247" y="0.0" width="200" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z2-aY-L5v">
+                                <rect key="frame" x="232" y="0.0" width="200" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WrS-kY-6wX"/>
                                 </constraints>
@@ -39,13 +39,14 @@
                 </subviews>
                 <color key="backgroundColor" white="0.67000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Cch-Bc-OF0" secondAttribute="trailing" constant="5" id="HH1-nZ-jIm"/>
-                    <constraint firstItem="Cch-Bc-OF0" firstAttribute="leading" secondItem="usL-De-eXv" secondAttribute="leading" constant="5" id="sGx-xC-6Ab"/>
+                    <constraint firstAttribute="trailing" secondItem="Cch-Bc-OF0" secondAttribute="trailing" constant="15" id="HH1-nZ-jIm"/>
+                    <constraint firstItem="Cch-Bc-OF0" firstAttribute="leading" secondItem="usL-De-eXv" secondAttribute="leading" constant="10" id="sGx-xC-6Ab"/>
                     <constraint firstAttribute="bottom" secondItem="Cch-Bc-OF0" secondAttribute="bottom" id="ugQ-47-k5K"/>
                     <constraint firstItem="Cch-Bc-OF0" firstAttribute="top" secondItem="usL-De-eXv" secondAttribute="top" id="xPY-ae-NJw"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.66666666669999997" alpha="0.091903181269999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="statusLabel" destination="yoY-GE-sK8" id="rSJ-B2-CwP"/>
                 <outlet property="val1Label" destination="1Z2-aY-L5v" id="QDQ-7r-xu6"/>

@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FZ7-yf-HZ5">
-                        <rect key="frame" x="5" y="0.0" width="404" height="43"/>
+                        <rect key="frame" x="10" y="0.0" width="399" height="43"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-y6-EXs">
-                                <rect key="frame" x="0.0" y="0.0" width="294" height="43"/>
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Nku-e1-YG6"/>
                                 </constraints>
@@ -28,8 +28,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-h8-yv3">
-                                <rect key="frame" x="299" y="0.0" width="50" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-h8-yv3">
+                                <rect key="frame" x="294" y="0.0" width="50" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="9m3-wi-Zo9"/>
                                 </constraints>
@@ -37,8 +37,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft8-bJ-Ccd">
-                                <rect key="frame" x="354" y="0.0" width="50" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft8-bJ-Ccd">
+                                <rect key="frame" x="349" y="0.0" width="50" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="ibj-GS-LiS"/>
                                 </constraints>
@@ -51,13 +51,14 @@
                 </subviews>
                 <color key="backgroundColor" white="0.67000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="FZ7-yf-HZ5" firstAttribute="leading" secondItem="rWM-ax-a2K" secondAttribute="leading" constant="5" id="HCc-TP-VrL"/>
+                    <constraint firstItem="FZ7-yf-HZ5" firstAttribute="leading" secondItem="rWM-ax-a2K" secondAttribute="leading" constant="10" id="HCc-TP-VrL"/>
                     <constraint firstAttribute="bottom" secondItem="FZ7-yf-HZ5" secondAttribute="bottom" id="J3Y-PE-BBD"/>
                     <constraint firstItem="FZ7-yf-HZ5" firstAttribute="top" secondItem="rWM-ax-a2K" secondAttribute="top" id="hFz-mz-EuD"/>
                     <constraint firstAttribute="trailing" secondItem="FZ7-yf-HZ5" secondAttribute="trailing" constant="5" id="jvA-mX-Aji"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.66666666666666663" alpha="0.091903181265521522" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="statusLabel" destination="JNa-y6-EXs" id="0BW-FT-2rv"/>
                 <outlet property="val1Label" destination="jFn-h8-yv3" id="6rp-Fr-r6C"/>

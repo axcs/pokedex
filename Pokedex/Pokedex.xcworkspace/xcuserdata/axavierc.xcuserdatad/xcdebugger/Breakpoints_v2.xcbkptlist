@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A2DF8B92-F6F0-48B8-B118-BBEF201B8563"
+            uuid = "D9A3D0E1-691E-4DE1-9C9B-3F4893906B6B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pokedex/MVVM/DetailsPoke/Controller/DetailsPokeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "tableView(_:heightForRowAt:)"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "loadServices()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
