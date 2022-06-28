@@ -85,3 +85,15 @@ class SpeciesModelPokemon {
         self.flavorText = fixStr2
     }
 }
+
+class DescValueObj{
+    var desc: String?
+    var value: String?
+    
+    init(desc: String, value: String) {
+        self.desc = desc
+        self.value = value
+    }
+    
+}
+
