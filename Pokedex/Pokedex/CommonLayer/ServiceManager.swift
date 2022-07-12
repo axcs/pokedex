@@ -26,8 +26,8 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-                    "failed with error \(error)".errorLog()
-                    completion(nil, "failed with error \(error)")
+                    "Failed with error \(error)".errorLog()
+                    completion(nil, "Failed with error \(error)")
                     break
                 }
         }
@@ -45,8 +45,8 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-                    "failed with error \(error)".errorLog()
-                    completion(nil, "failed with error \(error)")
+                    "Failed with error \(error)".errorLog()
+                    completion(nil, "Failed with error \(error)")
                     break
                 }
         }
@@ -67,7 +67,7 @@ class ServiceManager : BaseServices{
                     }
                     break
                 case .failure(let error):
-                    "failed with error \(error)".errorLog()
+                    "Failed with error \(error)".errorLog()
                     completion(nil, "failed with error \(error)")
     
                     break
@@ -91,8 +91,10 @@ class ServiceManager : BaseServices{
                         completion(savePokemonModel, nil)
                         break
                     case .failure(let error):
-                        "failed with error \(error)".errorLog()
-                        completion(nil, "failed with error \(error)")
+                        let savePokemonModel = CommonSavePokemonModel()
+                        savePokemonModel.success = false
+                        "Failed to Send, error: \(error)".errorLog()
+                        completion(savePokemonModel, "Failed to Send, error: \(error)")
                         break
                     }
                     

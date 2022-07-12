@@ -111,10 +111,11 @@ class HomeViewModel: HomeViewModelProtocol {
         self.serviceManager.getPokemonByID(pokemonID: id) { response, error in
             if let response = response {
                 self.serviceManager.saveFavorite(pokemonModel: response) { responseFav, error in
-                    if responseFav != nil {
+                    if responseFav?.success == true {
                         self.saveFavoritsModel.value = responseFav
                         "SUCESSO SAVE".sucessLog()
                     }else{
+                        self.saveFavoritsModel.value = responseFav
                         self.error.value = error
                     }
                 }

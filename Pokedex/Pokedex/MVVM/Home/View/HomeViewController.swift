@@ -58,9 +58,10 @@ extension HomeViewController {
         }
         
         viewModel.saveFavoritsModel.bind { value in
-            DispatchQueue.main.async {
-                AlertView.instance.showAlert(title: "g_sucesso".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
-                
+            if value.success {
+                DispatchQueue.main.async {
+                    AlertView.instance.showAlert(title: "g_sucesso".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
+                }
             }
         }
         
