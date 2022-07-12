@@ -10,8 +10,6 @@ import CoreLocation
 
 struct DetailsPokeModel {
     var pokemon : DetailsPokeModelPokemon?
-    var species : SpeciesModelPokemon?
-    var allPokemons :AllPokeModelPokemon?
 }
 
 class DetailsPokeModelPokemon {
@@ -67,11 +65,11 @@ class AllPokeModelPokemon{
 }
 
 class SpeciesModelPokemon {
-    var color: ColorData?
+    var color: String?
     var flavorText: String?
     
     init(cmumModel: CommonPokemonSpecies) {
-        self.color = cmumModel.color
+        self.color = cmumModel.color?.name.firstCapitalized
         
         let flavorTextEntries = cmumModel.flavorTextEntries
         var flavorDesc = ""

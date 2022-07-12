@@ -13,3 +13,11 @@
 
 // # Simulation
 "titleHome" = "My Pokemon List:";
+"favMsg" = "Favorite was sent successfully";
+
+"detail_number" = "Number";
+"detail_height" = "Height";
+"detail_weight" = "Weight";
+"detail_types" = "Types";
+"detail_color" = "Color";
+

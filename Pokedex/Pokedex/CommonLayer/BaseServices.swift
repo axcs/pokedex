@@ -7,8 +7,6 @@
 import Foundation
 
 class BaseServices {
-    var cacheID = "BaseServices"
-    
     init() {
         
     }
@@ -66,9 +64,6 @@ class BaseServices {
         task.resume()
     }
     
-    func cleanup(subscriberID: String){
-        CommonData.shared.unsubcribe(cacheID: cacheID, subscriberID: subscriberID)
-    }
     
 }
 

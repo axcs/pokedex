@@ -12,13 +12,14 @@ class ViewControllerUtil: UIViewController {
     var isLoading:Bool = false      // var for loading state in load more
     var activityView: UIActivityIndicatorView?
     var uitext: UILabel?
-    var blurEffectView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.8
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        return blurEffectView
+    
+    lazy var viewDark: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.8
+        return view
     }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class ViewControllerUtil: UIViewController {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         activityView?.color = .white
         activityView?.center = self.view.center
-        view.insertSubview(blurEffectView, at: 90)
+        view.insertSubview(viewDark, at: 90)
         view.addSubview(activityView!)
         view.addSubview(uitext!)
     }
@@ -49,9 +50,9 @@ class ViewControllerUtil: UIViewController {
     }
 
     func showActivityIndicator() {
-        blurEffectView.frame = self.view.bounds
+        viewDark.frame = self.view.bounds
         uitext?.frame =  CGRect(x: self.view.bounds.minX, y: self.view.bounds.minY + 60, width: self.view.bounds.width , height: self.view.bounds.height)
-        blurEffectView.isHidden = false
+        viewDark.isHidden = false
         uitext?.isHidden = false
         activityView?.center = self.view.center
         isLoading = true
@@ -63,27 +64,9 @@ class ViewControllerUtil: UIViewController {
             DispatchQueue.main.async {
                 self.isLoading = false
                 self.activityView?.stopAnimating()
-                self.blurEffectView.isHidden = true
+                self.viewDark.isHidden = true
                 self.uitext?.isHidden = true
             }
-        }
-    }
-    
-    func showError(msg: String?) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
-            self.present(alert, animated: true)
-        }
-    }
-    
-    func showMsg(msg: String?) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Warning", message: msg, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
         }
     }
 }

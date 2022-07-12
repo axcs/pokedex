@@ -24,13 +24,9 @@ class DetailsPokeViewController: ViewControllerUtil{
     private let headerPokemonCellIdentifier = "headerPokemonCell"
     private let headerInfoIdentifier = "headerInfoViewCell"
     private let headerCellIdentifier = "headerStatsViewCell"
-    private var status: [StatsModel]?
     private let viewModel = DetailsPokeViewModel()
     private var pokeID: String!
-    private var descText: String = ""
-    private var imgUrl: String = ""
-    private var pokemonObj : [DescValueObj] = []
-    
+
     var idP: String? {
         didSet {
             pokeID = idP
@@ -43,6 +39,7 @@ class DetailsPokeViewController: ViewControllerUtil{
         loadInfoForView()
         tableLoad()
         loadServices()
+        bindToModel()
     }
     
     
@@ -63,50 +60,37 @@ class DetailsPokeViewController: ViewControllerUtil{
         btnClose.layer.shadowRadius = 5.0
     }
     
-    func loadServices(){
-        self.showActivityIndicator()   // Show spinner loading
-        var namePoke: String = ""
-        self.viewModel.getPokemonInfo(id: pokeID) { success, response in
-            if success {
-                
-                self.status = response?.pokemon?.stats
-                
-                let numberObj = DescValueObj(desc: "Number", value: response?.pokemon?.description ?? "")
-                self.pokemonObj.append(numberObj)
-                
-                let weightObj = DescValueObj(desc: "Height", value: response?.pokemon?.weight ?? "")
-                self.pokemonObj.append(weightObj)
-                let heightObj = DescValueObj(desc: "Weight", value: response?.pokemon?.height ?? "")
-                self.pokemonObj.append(heightObj)
-                let typesObj = DescValueObj(desc: "Types", value: response?.pokemon?.types ?? "")
-                self.pokemonObj.append(typesObj)
-                
-                self.imgUrl = response?.pokemon?.imageURL ?? ""
-                namePoke = response?.pokemon?.name ?? ""
-            }
-            else {
-                "Erro getPokemonInfo".errorLog()
-            }
-            
-            self.viewModel.getPokemonSpecies(id: self.pokeID) { success, response in
-                if success {
-                    
-                    DispatchQueue.main.async {
-                        self.nameTxt.text = namePoke
-                        self.descText = response?.species?.flavorText ?? ""
-                        let typesObj = DescValueObj(desc: "Color", value: response?.species?.color?.name ?? "")
-                        self.pokemonObj.append(typesObj)
-                        self.hideActivityIndicator()   // hide spinner loading
-                        self.statusTableView.reloadData()
-                    }
-                }
-            }
-        }
-    }
-    
     //MARK: -  IbActions Btn
     @IBAction func btnCloseAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DetailsPokeViewController {
+    
+    func loadServices(){
+        self.showActivityIndicator()
+        viewModel.fetchPokemonInfo(idP ?? "")
+    }
+    
+    private func bindToModel() {
+        // Set View Model Event Listener
+        viewModel.model.bind {value in
+            self.nameTxt.text = value.pokemon?.name
+        }
+        
+        viewModel.sectionOneData.bind {value in
+            DispatchQueue.main.async {
+                self.statusTableView.reloadData()
+                self.hideActivityIndicator()
+            }
+        }
+        
+        viewModel.error.bind {error in
+            DispatchQueue.main.async {
+                AlertView.instance.showAlert(title: "g_error".localized, message: error, alertType: .failure, buttonTitle: "g_ok".localized)
+            }
+        }
     }
 }
 
@@ -114,12 +98,7 @@ class DetailsPokeViewController: ViewControllerUtil{
 extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate  {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.0 : 32
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -130,9 +109,6 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
             return 32
         }
     }
-    
-    
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
@@ -159,9 +135,9 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
         case 0:
             return 1
         case 1:
-            return pokemonObj.count
+            return viewModel.sectionOneData.value?.count ?? 0
         case 2:
-            return status?.count ?? 0
+            return viewModel.model.value?.pokemon?.stats?.count ?? 0
         default:
             return 0
         }
@@ -171,31 +147,32 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: headerPokemonCellIdentifier, for: indexPath) as! HeaderPokemonCell
-            
-            if imgUrl != ""{
+            if let imgUrl = viewModel.model.value?.pokemon?.imageURL {
                 cell.imageViewPoke.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell.imageViewPoke.sd_setImage(with: URL(string: imgUrl))
             }else{
                 cell.imageViewPoke.image = UIImage(named: "pokebola")
             }
-            cell.descText = descText
+            cell.descText = viewModel.introData.value?.flavorText
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoPokemonCell
-            cell.txtTitle = pokemonObj[indexPath.row].desc
-            cell.val1 = pokemonObj[indexPath.row].value
+            cell.txtTitle = viewModel.sectionOneData.value?[indexPath.row].desc
+            cell.val1 = viewModel.sectionOneData.value?[indexPath.row].value
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: detailCellIdentifier, for: indexPath) as! StatsViewCell
-            cell.txtTitle = status?[indexPath.row].stat?.name?.firstCapitalized
-            cell.val1 = "\(status?[indexPath.row].base_stat ?? 0)"
-            cell.val2 = "\(status?[indexPath.row].effort ?? 0)"
+            cell.txtTitle = viewModel.model.value?.pokemon?.stats?[indexPath.row].stat?.name?.firstCapitalized
+            cell.val1 = "\(viewModel.model.value?.pokemon?.stats?[indexPath.row].base_stat ?? 0)"
+            cell.val2 = "\(viewModel.model.value?.pokemon?.stats?[indexPath.row].effort ?? 0)"
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoPokemonCell
             return cell
-            
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0.0 : 32
     }
 }

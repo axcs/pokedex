@@ -25,19 +25,19 @@
                                     <constraint firstAttribute="width" secondItem="n6N-3V-U38" secondAttribute="height" multiplier="1:1" id="oSS-rK-3A1"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh4-1q-R6J">
-                                <rect key="frame" x="114" y="558" width="186.5" height="61"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="52"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" name="color_primary_text"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kI0-ta-jkX">
+                                <rect key="frame" x="46.5" y="548" width="321" height="96.5"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="68"/>
+                                <color key="textColor" name="textColorTitles"/>
+                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="n6N-3V-U38" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="34M-CE-yfF"/>
-                            <constraint firstItem="Yh4-1q-R6J" firstAttribute="centerX" secondItem="n6N-3V-U38" secondAttribute="centerX" id="Bf4-Ft-orX"/>
-                            <constraint firstItem="Yh4-1q-R6J" firstAttribute="top" secondItem="n6N-3V-U38" secondAttribute="bottom" constant="10" id="WqL-5B-3Db"/>
+                            <constraint firstItem="kI0-ta-jkX" firstAttribute="top" secondItem="n6N-3V-U38" secondAttribute="bottom" id="6es-le-VBF"/>
+                            <constraint firstItem="kI0-ta-jkX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zbn-GR-9dH"/>
                             <constraint firstItem="n6N-3V-U38" firstAttribute="width" secondItem="n6N-3V-U38" secondAttribute="height" multiplier="1:1" id="pqa-n2-Mu2"/>
                             <constraint firstItem="n6N-3V-U38" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zfi-7g-Dr9"/>
                         </constraints>
@@ -50,8 +50,8 @@
     </scenes>
     <resources>
         <image name="pokebola" width="579" height="578"/>
-        <namedColor name="color_primary_text">
-            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="textColorTitles">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "1891023_cancel_cercle_close_delete_dismiss_icon (3).png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "1891023_cancel_cercle_close_delete_dismiss_icon (1).png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "1891023_cancel_cercle_close_delete_dismiss_icon.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

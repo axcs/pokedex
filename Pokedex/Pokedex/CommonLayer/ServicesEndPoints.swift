@@ -27,7 +27,7 @@ enum ServicesEndPointsEnum{
         case .getListPokemons (let LIMITE, let OFFSET):
             return "https://pokeapi.co/api/v2/pokemon/?limit=\(LIMITE)&offset=\(OFFSET)"
         case .putFavorite:
-            return "https://webhook.site/9e4082e7-56c1-496e-9f8f-a4f13996745d"
+            return "https://webhook.site/a3880550-89fa-4eda-a17f-abe030967545"
         case .getPokemonSpecies(let ID):
             return "https://pokeapi.co/api/v2/pokemon-species/\(ID)"
         }

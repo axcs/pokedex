@@ -14,6 +14,7 @@ class HomeViewController: ViewControllerUtil {
     //MARK: - Var
     private let viewModel = HomeViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -23,7 +24,7 @@ class HomeViewController: ViewControllerUtil {
     
     //MARK: -  Func
     func setupView() {
-        self.prepareViewModelObserver()
+        self.bindToModel()
         self.homeTitleLB.text = "titleHome".localized
     }
 
@@ -38,18 +39,31 @@ class HomeViewController: ViewControllerUtil {
 extension HomeViewController {
     
     func fetchPokemonList(){
-        self.viewModel.fetchAllPokemons()
         self.showActivityIndicator()
+        self.viewModel.fetchAllPokemons()
     }
     
-    func prepareViewModelObserver() {
-        self.viewModel.pokemonsDidChanges = { (finished, error) in
-            if !error {
-                self.reloadTableView()
-                self.hideActivityIndicator()
-                self.isLoading = false
+    
+    func bindToModel() {
+        viewModel.error.bind { error in
+            DispatchQueue.main.async {
+                AlertView.instance.showAlert(title: "g_error".localized, message: error, alertType: .failure, buttonTitle: "g_ok".localized)
             }
         }
+        
+        viewModel.model.bind { value in
+            self.reloadTableView()
+            self.hideActivityIndicator()
+            self.isLoading = false
+        }
+        
+        viewModel.saveFavoritsModel.bind { value in
+            DispatchQueue.main.async {
+                AlertView.instance.showAlert(title: "g_sucesso".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
+                
+            }
+        }
+        
     }
     
     func reloadTableView() {
@@ -68,12 +82,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.model?.listPokemons.count ?? 0
+        return viewModel.model.value?.listPokemons.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let pokemon = viewModel.model?.listPokemons[indexPath.row]
+        let pokemon = viewModel.model.value?.listPokemons[indexPath.row]
         let vc = storyboard.instantiateViewController(withIdentifier: "detailsPokeViewController") as! DetailsPokeViewController
         vc.idP = pokemon?.numPoke
         vc.modalPresentationStyle = .fullScreen
@@ -82,10 +96,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(with: PokeCollectionViewCell.self, for: indexPath)
-        let pokemon = viewModel.model?.listPokemons[indexPath.row]
+        let pokemon = viewModel.model.value?.listPokemons[indexPath.row]
       
         let viewModel = PokemonCollectionViewViewModel(id: pokemon?.numPoke, name: pokemon?.name, description: pokemon?.pokemonInfo?.description ?? "", imageURL: pokemon?.pokemonInfo?.imageURL, favoriteAction: { (status :Bool, id: String) -> Void in
             self.viewModel.saveFavorits(id: id)
+          
         })
         DispatchQueue.main.async {
             cell.setup(pokemon: viewModel)
