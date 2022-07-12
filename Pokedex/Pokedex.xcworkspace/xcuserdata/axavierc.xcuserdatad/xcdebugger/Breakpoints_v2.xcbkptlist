@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D9A3D0E1-691E-4DE1-9C9B-3F4893906B6B"
+            uuid = "D9501823-A4E4-4CC5-81CD-97AD0E15BF51"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pokedex/MVVM/DetailsPoke/Controller/DetailsPokeViewController.swift"
+            filePath = "Pokedex/MVVM/Cells/PokeCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "loadServices()"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setup(pokemon:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

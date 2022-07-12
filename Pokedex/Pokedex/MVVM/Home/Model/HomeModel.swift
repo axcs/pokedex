@@ -8,9 +8,31 @@ import Foundation
 import CoreLocation
 
 struct HomeModel {
-    var pokemon : HomeModelPokemonModel?
-    var listPokemon : CommonListPokemon?
+    
+    var listPokemons : [HomeModelPokemonList] =  []
 }
+
+
+
+class HomeModelPokemonList {
+    var name: String?
+    var url: String?
+    var numPoke: String?
+    var pokemonInfo: HomeModelPokemonModel?
+    
+    
+    init(cmumModel: Result) {
+        self.name = cmumModel.name
+        self.url = cmumModel.url
+        let listItems = url?.components(separatedBy: "/")
+        self.numPoke = listItems?[6] 
+        
+    }
+
+}
+
+
+
 
 class HomeModelPokemonModel {
     var id : String?
@@ -38,4 +60,3 @@ class HomeModelPokemonModel {
         }
     }
 }
-

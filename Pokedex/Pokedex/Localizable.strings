@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Pokedex
+
+  Created by axavierc on 11/07/2022.
+  
+*/
+
+// # GERAL
+"g_sucesso" = "Sucesso";
+"g_error" = "Erro";
+"g_ok" = "Ok";
+
+// # Simulation
+"titleHome" = "My Pokemon List:";

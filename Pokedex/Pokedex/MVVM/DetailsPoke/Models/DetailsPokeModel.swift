@@ -59,7 +59,7 @@ class DetailsPokeModelPokemon {
 }
 
 class AllPokeModelPokemon{
-    var results: [Resultt]?
+    var results: [Result]?
     
     init(cmumModel: CommonListPokemon) {
         self.results = cmumModel.results

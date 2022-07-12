@@ -9,12 +9,13 @@ import UIKit
 
 class ViewControllerUtil: UIViewController {
     
+    var isLoading:Bool = false      // var for loading state in load more
     var activityView: UIActivityIndicatorView?
     var uitext: UILabel?
     var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.5
+        blurEffectView.alpha = 0.8
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blurEffectView
     }()
@@ -53,14 +54,18 @@ class ViewControllerUtil: UIViewController {
         blurEffectView.isHidden = false
         uitext?.isHidden = false
         activityView?.center = self.view.center
+        isLoading = true
         activityView?.startAnimating()
     }
 
     func hideActivityIndicator(){
         if (activityView != nil){
-            activityView?.stopAnimating()
-            blurEffectView.isHidden = true
-            uitext?.isHidden = true
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.activityView?.stopAnimating()
+                self.blurEffectView.isHidden = true
+                self.uitext?.isHidden = true
+            }
         }
     }
     

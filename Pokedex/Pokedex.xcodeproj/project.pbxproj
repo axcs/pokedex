@@ -37,6 +37,7 @@
 		B476B74628630DDF0007A1DB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B74328630DDF0007A1DB /* String+Extension.swift */; };
 		B476B74728630DDF0007A1DB /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */; };
 		B476B74828630DDF0007A1DB /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B74528630DDF0007A1DB /* NSObject+Extension.swift */; };
+		B49CF750287C3F9C00BA5D86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49CF74F287C3F9C00BA5D86 /* Localizable.strings */; };
 		B4DE52E328636F1900565563 /* DetailsPokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE52E228636F1900565563 /* DetailsPokeViewController.swift */; };
 		B4DE52E52863787700565563 /* DetailsPokeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE52E42863787700565563 /* DetailsPokeViewModel.swift */; };
 		B4DE52E72863A0FB00565563 /* StatsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE52E62863A0FB00565563 /* StatsViewCell.xib */; };
@@ -110,6 +111,7 @@
 		B476B74328630DDF0007A1DB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		B476B74528630DDF0007A1DB /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		B49CF74F287C3F9C00BA5D86 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B4DE52E228636F1900565563 /* DetailsPokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPokeViewController.swift; sourceTree = "<group>"; };
 		B4DE52E42863787700565563 /* DetailsPokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPokeViewModel.swift; sourceTree = "<group>"; };
 		B4DE52E62863A0FB00565563 /* StatsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsViewCell.xib; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				B437C97F2861FA9B00361D78 /* LaunchScreen.storyboard */,
 				B437C9822861FA9B00361D78 /* Info.plist */,
 				B437C97A2861FA9800361D78 /* Pokedex.xcdatamodeld */,
+				B49CF74F287C3F9C00BA5D86 /* Localizable.strings */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -241,36 +244,36 @@
 		B437C9B0286205EF00361D78 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B476B7222862FF3C0007A1DB /* View Models */,
-				B476B71D2862FF130007A1DB /* Models */,
-				B476B71A2862FEED0007A1DB /* Controller */,
+				B476B7222862FF3C0007A1DB /* ViewModel */,
+				B476B71D2862FF130007A1DB /* Model */,
+				B476B71A2862FEED0007A1DB /* View */,
 				B437C9772861FA9800361D78 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		B476B71A2862FEED0007A1DB /* Controller */ = {
+		B476B71A2862FEED0007A1DB /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B476B71B2862FF010007A1DB /* HomeViewController.swift */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B476B71D2862FF130007A1DB /* Models */ = {
+		B476B71D2862FF130007A1DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B476B71E2862FF130007A1DB /* HomeModel.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		B476B7222862FF3C0007A1DB /* View Models */ = {
+		B476B7222862FF3C0007A1DB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				B476B7232862FF3C0007A1DB /* HomeViewModel.swift */,
 			);
-			path = "View Models";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B476B7252863031D0007A1DB /* CommonLayer */ = {
@@ -475,6 +478,7 @@
 				B437C97E2861FA9B00361D78 /* Assets.xcassets in Resources */,
 				B4176E7C286B0BD100C38AB0 /* InfoPokemonCell.xib in Resources */,
 				B4176E80286B1C6600C38AB0 /* HeaderPokemonCell.xib in Resources */,
+				B49CF750287C3F9C00BA5D86 /* Localizable.strings in Resources */,
 				B437C9792861FA9800361D78 /* Home.storyboard in Resources */,
 				B4DE52F328646C4900565563 /* PokeCollectionViewCell.xib in Resources */,
 			);

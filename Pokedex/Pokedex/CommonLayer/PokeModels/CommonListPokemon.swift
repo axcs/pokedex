@@ -12,7 +12,7 @@ class CommonListPokemon : CommonDataBaseModel, Codable{
     var count: Int?
     var next: String?
     var previous: String?
-    var results: [Resultt]?
+    var results: [Result]?
    
 
     
@@ -22,13 +22,13 @@ class CommonListPokemon : CommonDataBaseModel, Codable{
 }
 
 // MARK: - Result
-class Resultt: Codable {
+class Result: Codable {
     let name: String
     let url: String
-    var idAux: String?
 
     init(name: String, url: String) {
         self.name = name
         self.url = url
     }
+
 }
