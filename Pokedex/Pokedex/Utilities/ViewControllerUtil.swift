@@ -32,7 +32,7 @@ class ViewControllerUtil: UIViewController {
     private func initObjs(){
         uitext = UILabel()
         uitext?.textAlignment = .center
-        uitext?.text = "Loading..."
+        uitext?.text = "g_loading".localized
         uitext?.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         uitext?.textColor = .white
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)

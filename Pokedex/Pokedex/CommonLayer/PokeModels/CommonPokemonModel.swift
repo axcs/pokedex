@@ -20,7 +20,6 @@ class CommonPokemonModel : CommonDataBaseModel, Codable{
     var types : [TypeElement]?
     
     override init() {
-        //TODO
     }
     
     //enum to match model properties and JSON names

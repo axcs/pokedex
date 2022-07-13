@@ -8,6 +8,8 @@
 import Foundation
 import CoreLocation
 
+
+
 struct DetailsPokeModel {
     var pokemon : DetailsPokeModelPokemon?
 }
@@ -74,13 +76,15 @@ class SpeciesModelPokemon {
         let flavorTextEntries = cmumModel.flavorTextEntries
         var flavorDesc = ""
         for flavor in flavorTextEntries ?? [] {
+            // get description pokemon version "red"
             if (flavor.version.name == "red"){
                 flavorDesc = flavor.flavorText
             }
         }
-        let fixStr1 = flavorDesc.replacingOccurrences(of: "\\f", with: " ", options: .regularExpression, range: nil)
-        let fixStr2 = fixStr1.replacingOccurrences(of: "\n", with: " ", options: .literal, range: nil)
-        self.flavorText = fixStr2
+        // Formatting description by removing the an unnecessary characters
+        let formatStr1 = flavorDesc.replacingOccurrences(of: "\\f", with: " ", options: .regularExpression, range: nil)
+        let formatStr2 = formatStr1.replacingOccurrences(of: "\n", with: " ", options: .literal, range: nil)
+        self.flavorText = formatStr2
     }
 }
 

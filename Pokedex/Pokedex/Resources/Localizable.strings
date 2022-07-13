@@ -7,14 +7,16 @@
 */
 
 // # GERAL
-"g_sucesso" = "Sucesso";
-"g_error" = "Erro";
+"g_success" = "Success";
+"g_error" = "Error";
 "g_ok" = "Ok";
+"g_loading" = "Loading ...";
 
-// # Simulation
+// # Home
 "titleHome" = "My Pokemon List:";
-"favMsg" = "Favorite was sent successfully";
+"favMsg" = "Favorite was save successfully";
 
+// # Detail
 "detail_number" = "Number";
 "detail_height" = "Height";
 "detail_weight" = "Weight";

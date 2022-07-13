@@ -71,7 +71,7 @@ enum httpMethod : String{
     case get = "GET"
     case post = "POST"
     case put = "PUT"
-    //TODO: Add all httpMethods Here
+
 }
 
 enum ErrorType {

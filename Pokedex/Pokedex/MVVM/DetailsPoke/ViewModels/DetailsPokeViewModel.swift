@@ -10,6 +10,7 @@ import UIKit.UIImage
 
 protocol DetailsPokeViewModelProtocol {
     func fetchPokemonInfo(_ idPoke: String)
+    func saveFavorits(id: String) 
 }
 
 public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
@@ -19,6 +20,8 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
     var model:DynamicType<DetailsPokeModel> = DynamicType<DetailsPokeModel>()
     var sectionOneData:DynamicType<[DescValueObj]> = DynamicType<[DescValueObj]>()
     var introData:DynamicType<SpeciesModelPokemon> = DynamicType<SpeciesModelPokemon>()
+    var saveFavoritsModel:DynamicType<CommonSavePokemonModel> = DynamicType<CommonSavePokemonModel>()
+
     
     init() {
     }
@@ -29,7 +32,7 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
         var pokemonObj : [DescValueObj] = []
         var speciesData: SpeciesModelPokemon?
         
-        dispatchGroup.enter()   // <<---
+        dispatchGroup.enter()
         self.serviceManager.getPokemonByID(pokemonID: idPoke) { response, error in
             if let response = response {
                 auxModel.pokemon = DetailsPokeModelPokemon(cmumModel: response)
@@ -44,7 +47,7 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
                 pokemonObj.append(typesObj)
                 
 
-                dispatchGroup.enter()   // <<---
+                dispatchGroup.enter()
                 self.serviceManager.getPokemonSpecies(pokemonID: idPoke) { responseSpecies, error in
                     if let responseSp = responseSpecies {
                         speciesData = SpeciesModelPokemon(cmumModel: responseSp)
@@ -54,14 +57,14 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
                     }else {
                         self.error.value = error
                     }
-                    dispatchGroup.leave()   // <<----
+                    dispatchGroup.leave()
                 }
                 
                 
             }else {
                 self.error.value = error
             }
-            dispatchGroup.leave()   // <<----
+            dispatchGroup.leave()  
         }
         
         dispatchGroup.notify(queue: .main) {
@@ -70,4 +73,24 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
             self.introData.value = speciesData
         }
     }
+    
+    func saveFavorits(id: String) {
+        self.serviceManager.getPokemonByID(pokemonID: id) { response, error in
+            if let response = response {
+                self.serviceManager.saveFavorite(pokemonModel: response) { responseFav, error in
+                    if responseFav?.success == true {
+                        self.saveFavoritsModel.value = responseFav
+                        "SAVE OK".sucessLog()
+                    }else{
+                        self.saveFavoritsModel.value = responseFav
+                        self.error.value = error
+                    }
+                }
+                
+            }else{
+                self.error.value = error
+            }
+        }
+    }
+    
 }

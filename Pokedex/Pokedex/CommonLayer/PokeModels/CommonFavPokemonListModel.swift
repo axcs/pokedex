@@ -12,7 +12,6 @@ class CommonFavPokemonListModel : CommonDataBaseModel, Codable{
     var favoritePokemonIDList : [CommonPokemonModel] = []
     
     override init() {
-        //TODO
     }
     
     //enum to match model properties and JSON names

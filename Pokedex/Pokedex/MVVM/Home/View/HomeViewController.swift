@@ -7,18 +7,20 @@
 import UIKit
 
 class HomeViewController: ViewControllerUtil {
+
     //MARK: - Outlets
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var homeTitleLB: UILabel!
 
     //MARK: - Var
+    private let SIZEFORSCROLL = 5.0
+    private let DETAILS_VIEWCONTROL_IDENT = "detailsPokeViewController"
     private let viewModel = HomeViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.setupCollectionView()
         self.fetchPokemonList()
     }
     
@@ -26,6 +28,7 @@ class HomeViewController: ViewControllerUtil {
     func setupView() {
         self.bindToModel()
         self.homeTitleLB.text = "titleHome".localized
+        self.setupCollectionView()
     }
 
     func setupCollectionView(){
@@ -58,9 +61,10 @@ extension HomeViewController {
         }
         
         viewModel.saveFavoritsModel.bind { value in
+            self.hideActivityIndicator()
             if value.success {
                 DispatchQueue.main.async {
-                    AlertView.instance.showAlert(title: "g_sucesso".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
+                    AlertView.instance.showAlert(title: "g_success".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
                 }
             }
         }
@@ -89,7 +93,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let pokemon = viewModel.model.value?.listPokemons[indexPath.row]
-        let vc = storyboard.instantiateViewController(withIdentifier: "detailsPokeViewController") as! DetailsPokeViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: DETAILS_VIEWCONTROL_IDENT) as! DetailsPokeViewController
         vc.idP = pokemon?.numPoke
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
@@ -99,12 +103,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(with: PokeCollectionViewCell.self, for: indexPath)
         let pokemon = viewModel.model.value?.listPokemons[indexPath.row]
       
-        let viewModel = PokemonCollectionViewViewModel(id: pokemon?.numPoke, name: pokemon?.name, description: pokemon?.pokemonInfo?.description ?? "", imageURL: pokemon?.pokemonInfo?.imageURL, favoriteAction: { (status :Bool, id: String) -> Void in
+        let viewMo =  PokemonCollectionViewViewModel(id: pokemon?.numPoke, name: pokemon?.name, description: pokemon?.pokemonInfo?.description ?? "", imageURL: pokemon?.pokemonInfo?.imageURL, favoriteAction: {( id: String) -> Void in
+            self.showActivityIndicator()
             self.viewModel.saveFavorits(id: id)
           
         })
         DispatchQueue.main.async {
-            cell.setup(pokemon: viewModel)
+            cell.setup(pokemon: viewMo)
         }
 
         return cell
@@ -120,11 +125,11 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        if (maximumOffset - currentOffset) <= 10 {
+        if (maximumOffset - currentOffset) <= SIZEFORSCROLL {
             if self.isLoading == false {
                 self.showActivityIndicator()
                 self.isLoading = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.viewModel.fetchNextPagePokemons()
                 }
             }

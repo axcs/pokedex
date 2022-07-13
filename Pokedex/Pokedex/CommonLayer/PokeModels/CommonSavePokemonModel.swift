@@ -12,7 +12,6 @@ class CommonSavePokemonModel : CommonDataBaseModel, Codable{
     var id : Int?
     var success = false
     override init() {
-        //TODO
     }
     
     //enum to match model properties and JSON names

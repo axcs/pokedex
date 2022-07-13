@@ -20,14 +20,10 @@ import UIKit
 
 extension UITableView {
     
-    public func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
+    public func register<T: UITableViewCell>(_ cellType: T.Type, forCellReuseIdentifier identifier: String) {
         let className = cellType.nameOfClass
-        let nib = UINib(nibName: className, bundle: bundle)
-        register(nib, forCellReuseIdentifier: className)
-    }
-    
-    public func register<T: UITableViewCell>(cellTypes: [T.Type], bundle: Bundle? = nil) {
-        cellTypes.forEach { register(cellType: $0, bundle: bundle) }
+        let nib = UINib(nibName: className, bundle: nil)
+        self.register(nib, forCellReuseIdentifier: identifier)
     }
     
     public func dequeueReusableCell<T: UITableViewCell>(with type: T.Type,

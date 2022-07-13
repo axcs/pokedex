@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,13 +34,43 @@
                         <color key="textColor" name="textColorTitles"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55b-LE-RA8">
+                        <rect key="frame" x="428" y="125" width="40" height="40"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-zg-Xhn">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButtonAction:" destination="2TL-WR-b2h" eventType="touchUpInside" id="Kjo-J1-LXS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GQn-zg-Xhn" secondAttribute="trailing" id="CFV-mu-Emp"/>
+                            <constraint firstAttribute="bottom" secondItem="GQn-zg-Xhn" secondAttribute="bottom" id="OpA-Xj-mrO"/>
+                            <constraint firstItem="GQn-zg-Xhn" firstAttribute="top" secondItem="55b-LE-RA8" secondAttribute="top" id="S56-dY-h39"/>
+                            <constraint firstAttribute="height" constant="40" id="mgb-WB-bNq"/>
+                            <constraint firstItem="GQn-zg-Xhn" firstAttribute="leading" secondItem="55b-LE-RA8" secondAttribute="leading" id="net-As-bUZ"/>
+                            <constraint firstAttribute="width" secondItem="55b-LE-RA8" secondAttribute="height" multiplier="1:1" id="zb9-hq-7fp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.67000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="V6F-oh-DzK" firstAttribute="leading" secondItem="kdy-C2-eO9" secondAttribute="leading" constant="15" id="1gc-2Q-C5q"/>
+                    <constraint firstAttribute="trailing" secondItem="55b-LE-RA8" secondAttribute="trailing" constant="20" id="8wf-8b-rEq"/>
+                    <constraint firstItem="55b-LE-RA8" firstAttribute="width" secondItem="55b-LE-RA8" secondAttribute="height" multiplier="1:1" id="BLc-qh-Tmd"/>
                     <constraint firstAttribute="trailing" secondItem="V6F-oh-DzK" secondAttribute="trailing" constant="15" id="Hy5-F1-nL1"/>
                     <constraint firstItem="p9i-UG-OH4" firstAttribute="centerX" secondItem="kdy-C2-eO9" secondAttribute="centerX" id="JcY-4R-Yks"/>
                     <constraint firstAttribute="bottom" secondItem="V6F-oh-DzK" secondAttribute="bottom" constant="2" id="Jvi-50-CHG"/>
+                    <constraint firstItem="V6F-oh-DzK" firstAttribute="top" secondItem="55b-LE-RA8" secondAttribute="bottom" constant="15" id="PvT-TP-8gb"/>
                     <constraint firstItem="p9i-UG-OH4" firstAttribute="top" secondItem="kdy-C2-eO9" secondAttribute="top" id="pV5-BD-L7z"/>
                     <constraint firstItem="V6F-oh-DzK" firstAttribute="top" secondItem="p9i-UG-OH4" secondAttribute="bottom" constant="10" id="pVd-ha-fiD"/>
                 </constraints>
@@ -48,14 +79,20 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="descLabel" destination="V6F-oh-DzK" id="vYr-Ma-THt"/>
+                <outlet property="favoriteButton" destination="GQn-zg-Xhn" id="PhC-JX-mQL"/>
+                <outlet property="favoriteContainerView" destination="55b-LE-RA8" id="sR9-s8-OxD"/>
                 <outlet property="imageViewPoke" destination="p9i-UG-OH4" id="wCJ-RO-iyH"/>
             </connections>
             <point key="canvasLocation" x="27.536231884057973" y="138.28125"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <namedColor name="textColorTitles">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

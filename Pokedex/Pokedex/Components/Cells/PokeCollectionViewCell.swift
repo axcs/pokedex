@@ -64,7 +64,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
     @IBAction func favoriteButtonAction(_ sender: Any) {
         favoriteStatus = !favoriteStatus
         if favoriteStatus {
-            self.pokemon?.favoriteAction?(self.favoriteStatus, pokemon?.id ?? "")
+            self.pokemon?.favoriteAction?( pokemon?.id ?? "")
         }
     }
     
@@ -94,10 +94,10 @@ class PokemonCollectionViewViewModel {
     var description : String = ""
     var imageURL : String? = nil
     
-    var favoriteAction: ((_ status: Bool, _ id: String)->())? = nil
+    var favoriteAction: ((_ id: String)->())? = nil
     var favoriteStatus = false
     
-    init(id: String?, name : String?, description : String, imageURL : String?, favoriteAction: ((_ status: Bool, _ id: String)->())? = nil, favoriteStatus : Bool = false ){
+    init(id: String?, name : String?, description : String, imageURL : String?, favoriteAction: (( _ id: String)->())? = nil, favoriteStatus : Bool = false ){
         self.id = id
         self.name = name
         self.description = description

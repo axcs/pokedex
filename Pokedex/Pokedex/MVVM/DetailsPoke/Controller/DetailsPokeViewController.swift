@@ -6,27 +6,24 @@
 //
 
 import UIKit
-import SDWebImage
 
 class DetailsPokeViewController: ViewControllerUtil{
     
     //MARK: - Outlets
-    
-    //    @IBOutlet weak var pokeImageView: UIImageView!
     @IBOutlet weak var nameTxt: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var statusTableView: UITableView!
-    //    @IBOutlet weak var descTxt: UILabel!
     
     //MARK: - Var
-    private let detailCellIdentifier = "statsViewCell"
-    private let infoCellIdentifier = "infoPokemonCell"
-    private let headerPokemonCellIdentifier = "headerPokemonCell"
-    private let headerInfoIdentifier = "headerInfoViewCell"
-    private let headerCellIdentifier = "headerStatsViewCell"
+    private let STATS_CELL_IDENT = "statsViewCell"
+    private let INFO_CELL_IDENT = "infoPokemonCell"
+    private let HEADER_POKEMON_CELL_IDENT = "headerPokemonCell"
+    private let HEADER_INFO_CELL_IDENT = "headerInfoViewCell"
+    private let HEADER_STATS_CELL_IDENT = "headerStatsViewCell"
+    
     private let viewModel = DetailsPokeViewModel()
     private var pokeID: String!
-
+    
     var idP: String? {
         didSet {
             pokeID = idP
@@ -47,9 +44,11 @@ class DetailsPokeViewController: ViewControllerUtil{
     func tableLoad(){
         statusTableView.dataSource = self
         statusTableView.delegate = self
-        statusTableView.register(UINib(nibName: "HeaderPokemonCell", bundle: nil), forCellReuseIdentifier: headerPokemonCellIdentifier)
-        statusTableView.register(UINib(nibName: "StatsViewCell", bundle: nil), forCellReuseIdentifier: detailCellIdentifier)
-        statusTableView.register(UINib(nibName: "InfoPokemonCell", bundle: nil), forCellReuseIdentifier: infoCellIdentifier)
+        statusTableView.register(HeaderPokemonCell.self, forCellReuseIdentifier: HEADER_POKEMON_CELL_IDENT)
+        statusTableView.register(StatsViewCell.self, forCellReuseIdentifier: STATS_CELL_IDENT)
+        statusTableView.register(InfoPokemonCell.self, forCellReuseIdentifier: INFO_CELL_IDENT)
+     
+
     }
     
     func loadInfoForView(){
@@ -86,6 +85,15 @@ extension DetailsPokeViewController {
             }
         }
         
+        viewModel.saveFavoritsModel.bind { value in
+            self.hideActivityIndicator()
+            if value.success {
+                DispatchQueue.main.async {
+                    AlertView.instance.showAlert(title: "g_success".localized, message: "favMsg".localized, alertType: .success, buttonTitle: "g_ok".localized)
+                }
+            }
+        }
+        
         viewModel.error.bind {error in
             DispatchQueue.main.async {
                 AlertView.instance.showAlert(title: "g_error".localized, message: error, alertType: .failure, buttonTitle: "g_ok".localized)
@@ -117,10 +125,10 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
             lb.text = ""
             return lb
         case 1:
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: headerInfoIdentifier)
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: HEADER_INFO_CELL_IDENT)
             return headerCell
         case 2:
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: headerCellIdentifier)
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: HEADER_STATS_CELL_IDENT)
             return headerCell
         default:
             let lb = UILabel()
@@ -146,28 +154,29 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: headerPokemonCellIdentifier, for: indexPath) as! HeaderPokemonCell
-            if let imgUrl = viewModel.model.value?.pokemon?.imageURL {
-                cell.imageViewPoke.sd_imageIndicator = SDWebImageActivityIndicator.gray
-                cell.imageViewPoke.sd_setImage(with: URL(string: imgUrl))
-            }else{
-                cell.imageViewPoke.image = UIImage(named: "pokebola")
+            let cell = tableView.dequeueReusableCell(withIdentifier: HEADER_POKEMON_CELL_IDENT, for: indexPath) as! HeaderPokemonCell
+            let viewMo =   HeaderPokemonCellViewModel(id: viewModel.model.value?.pokemon?.id, description: viewModel.introData.value?.flavorText ?? "", imageURL: viewModel.model.value?.pokemon?.imageURL, favoriteAction:  {( id: String) -> Void in
+                self.showActivityIndicator()
+                self.viewModel.saveFavorits(id: id)
+            })
+            
+            DispatchQueue.main.async {
+                cell.setup(headerPokemon: viewMo)
             }
-            cell.descText = viewModel.introData.value?.flavorText
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoPokemonCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: INFO_CELL_IDENT, for: indexPath) as! InfoPokemonCell
             cell.txtTitle = viewModel.sectionOneData.value?[indexPath.row].desc
             cell.val1 = viewModel.sectionOneData.value?[indexPath.row].value
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: detailCellIdentifier, for: indexPath) as! StatsViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: STATS_CELL_IDENT, for: indexPath) as! StatsViewCell
             cell.txtTitle = viewModel.model.value?.pokemon?.stats?[indexPath.row].stat?.name?.firstCapitalized
             cell.val1 = "\(viewModel.model.value?.pokemon?.stats?[indexPath.row].base_stat ?? 0)"
             cell.val2 = "\(viewModel.model.value?.pokemon?.stats?[indexPath.row].effort ?? 0)"
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoPokemonCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: INFO_CELL_IDENT, for: indexPath) as! InfoPokemonCell
             return cell
         }
     }

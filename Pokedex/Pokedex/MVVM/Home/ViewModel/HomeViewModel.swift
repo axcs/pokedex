@@ -17,9 +17,11 @@ protocol HomeViewModelProtocol {
 
 class HomeViewModel: HomeViewModelProtocol {
     
-    private var pageOffset:Int = 0          // var count offset Page
-    private var pageRowsLimite:Int = 10      // var page limite
-    private let serviceManager = ServiceManager()
+    private var pageOffset:Int = 0                 // var count offset Page
+    private var pageRowsLimite:Int = 10            // var page limite
+    private let serviceManager = ServiceManager()  // var service Manager
+    
+    
     var error:DynamicType<String> = DynamicType<String>()
     var model:DynamicType<HomeModel> = DynamicType<HomeModel>()
     var saveFavoritsModel:DynamicType<CommonSavePokemonModel> = DynamicType<CommonSavePokemonModel>()
@@ -30,9 +32,9 @@ class HomeViewModel: HomeViewModelProtocol {
 
     public func fetchAllPokemons(){
         var auxModel = HomeModel()
-        let dispatchGroup = DispatchGroup()
+        let dispatchGroup = DispatchGroup() // Create  Dispatch Group
         
-        dispatchGroup.enter()   // <<---
+        dispatchGroup.enter() // Enter task 1
         self.serviceManager.getListPokemons(limite: pageRowsLimite, offset: pageOffset) { response, error in
             
             if let response = response {
@@ -40,10 +42,10 @@ class HomeViewModel: HomeViewModelProtocol {
                     auxModel.listPokemons.append(HomeModelPokemonList(cmumModel: item))
                 }
                 for poke in auxModel.listPokemons {
-                    dispatchGroup.enter()   // <<---
+                    dispatchGroup.enter() // Enter task 2
                     
                     self.serviceManager.getPokemonByID(pokemonID: poke.numPoke ?? "") { responseInfo, error in
-                        dispatchGroup.leave()   // <<----
+                        dispatchGroup.leave() // Leave task 2
                         if let responsePoke = responseInfo {
                             let infoPoke = HomeModelPokemonModel(cmumModel: responsePoke)
                             poke.pokemonInfo = infoPoke
@@ -53,7 +55,7 @@ class HomeViewModel: HomeViewModelProtocol {
                     }
                     
                 }
-                dispatchGroup.leave()   // <<----
+                dispatchGroup.leave() // Leave task 1
                 
             }else {
                 "Error on GetAllPokemons Service".errorLog()
@@ -70,9 +72,9 @@ class HomeViewModel: HomeViewModelProtocol {
     func fetchNextPagePokemons() {
         pageOffset += 10
         var auxModel = HomeModel()
-        let dispatchGroup = DispatchGroup()
+        let dispatchGroup = DispatchGroup() // Create  Dispatch Group
         auxModel.listPokemons = self.model.value?.listPokemons ?? []
-        dispatchGroup.enter()   // <<---
+        dispatchGroup.enter()  // Enter task 1
         self.serviceManager.getListPokemons(limite: pageRowsLimite, offset: pageOffset) { response, error in
             
             if let response = response {
@@ -80,10 +82,10 @@ class HomeViewModel: HomeViewModelProtocol {
                     auxModel.listPokemons.append(HomeModelPokemonList(cmumModel: item))
                 }
                 for poke in auxModel.listPokemons {
-                    dispatchGroup.enter()   // <<---
+                    dispatchGroup.enter()    // Enter task 2
                     
                     self.serviceManager.getPokemonByID(pokemonID: poke.numPoke ?? "") { response, error in
-                        dispatchGroup.leave()   // <<----
+                        dispatchGroup.leave()   // Leave task 2
                         if let response = response {
                             let infoPoke = HomeModelPokemonModel(cmumModel: response)
                             poke.pokemonInfo = infoPoke
@@ -93,7 +95,7 @@ class HomeViewModel: HomeViewModelProtocol {
                     }
                     
                 }
-                dispatchGroup.leave()   // <<----
+                dispatchGroup.leave()  // Leave task 1
                 
             }else {
                 "Error on GetAllPokemons Service".errorLog()
@@ -113,7 +115,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 self.serviceManager.saveFavorite(pokemonModel: response) { responseFav, error in
                     if responseFav?.success == true {
                         self.saveFavoritsModel.value = responseFav
-                        "SUCESSO SAVE".sucessLog()
+                        "SAVE OK".sucessLog()
                     }else{
                         self.saveFavoritsModel.value = responseFav
                         self.error.value = error
@@ -124,7 +126,6 @@ class HomeViewModel: HomeViewModelProtocol {
                 self.error.value = error
             }
         }
-        
     }
 }
 

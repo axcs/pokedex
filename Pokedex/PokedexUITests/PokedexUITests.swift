@@ -59,7 +59,9 @@ class PokedexUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.collectionViews.children(matching: .cell).element(boundBy: 0).buttons["love"].tap()
-        app.alerts["Warning"].scrollViews.otherElements.buttons["OK"].tap()
+        app.buttons["Ok"].tap()
+
+ 
     }
 
     func testLaunchPerformance() throws {
