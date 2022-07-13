@@ -15,6 +15,7 @@ class HomeViewController: ViewControllerUtil {
     //MARK: - Var
     private let SIZEFORSCROLL = 5.0
     private let DETAILS_VIEWCONTROL_IDENT = "detailsPokeViewController"
+    private let ABOUT_VIEWCONTROL_IDENT = "aboutViewController"
     private let viewModel = HomeViewModel()
     
     
@@ -35,6 +36,12 @@ class HomeViewController: ViewControllerUtil {
         self.homeCollectionView.dataSource = self
         self.homeCollectionView.delegate = self
         self.homeCollectionView.register(cellType: PokeCollectionViewCell.self)
+    }
+    
+    @IBAction func aboutButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: ABOUT_VIEWCONTROL_IDENT) as! AboutViewController
+        self.present(vc, animated: true)
     }
 }
 

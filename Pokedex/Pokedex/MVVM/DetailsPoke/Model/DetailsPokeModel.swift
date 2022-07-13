@@ -22,6 +22,12 @@ class DetailsPokeModelPokemon {
     var types : String?
     var stats : [StatsModel]?
     
+    init(_ weight:String,_ height: String) {
+        let weightAux = Double(weight) ?? 0.0
+        let heightAux = Double(height) ?? 0.0
+        self.height = getHeightConverted(heightAux)
+        self.weight = getWeightConverted(weightAux)
+    }
     
     init(cmumModel: CommonPokemonModel) {
         self.id = "\(cmumModel.id ?? 0)"
@@ -33,12 +39,9 @@ class DetailsPokeModelPokemon {
         
         let weightAux = Double(cmumModel.weight ?? 0)
         let heightAux = Double(cmumModel.height ?? 0)
-        // TODO: remover unidades hardcode
-        let countryCode = NSLocale.current.regionCode
-        
-        
-        self.height = "\(heightAux / 10.0) m"
-        self.weight = "\(weightAux / 10.0) kg"
+
+        self.height = getHeightConverted(heightAux)
+        self.weight = getWeightConverted(weightAux)
 
         self.stats = cmumModel.stats
         
@@ -61,6 +64,27 @@ class DetailsPokeModelPokemon {
             }
         }
     }
+    
+    func getWeightConverted(_ weight: Double) -> String{
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "UseKG") {
+            return "\(weight / 10.0) \("detail_kg".localized)"
+        }
+        let formatValue: String = String(format: "%.1f", (weight * 0.22046))
+
+        return "\(formatValue) \("detail_lb".localized)"
+    }
+    
+    func getHeightConverted(_ height: Double) -> String{
+       
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "UseM") {
+            return "\(height / 10.0) \("detail_m".localized)"
+        }
+        let formatValue: String = String(format: "%.1f", (height * 0.03280))
+        return "\(formatValue) \("detail_feet".localized)"
+    }
+   
 }
 
 class AllPokeModelPokemon{

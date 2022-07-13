@@ -23,3 +23,17 @@
 "detail_types" = "Types";
 "detail_color" = "Color";
 "detail_habitat" = "Habitat";
+"detail_kg" = "kg";
+"detail_lb" = "lbs";
+"detail_m" = "m";
+"detail_feet" = "ft";
+
+
+// # About
+"about_appVersion" = "Version";
+"about_appDeveloped" = "Developed by:";
+"about_units" = "Measurement units:";
+"about_height" = "Height:";
+"about_weight" = "Weight:";
+
+

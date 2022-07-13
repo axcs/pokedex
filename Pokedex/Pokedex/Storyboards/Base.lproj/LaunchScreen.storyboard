@@ -38,7 +38,6 @@
                             <constraint firstItem="n6N-3V-U38" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="34M-CE-yfF"/>
                             <constraint firstItem="kI0-ta-jkX" firstAttribute="top" secondItem="n6N-3V-U38" secondAttribute="bottom" id="6es-le-VBF"/>
                             <constraint firstItem="kI0-ta-jkX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zbn-GR-9dH"/>
-                            <constraint firstItem="n6N-3V-U38" firstAttribute="width" secondItem="n6N-3V-U38" secondAttribute="height" multiplier="1:1" id="pqa-n2-Mu2"/>
                             <constraint firstItem="n6N-3V-U38" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zfi-7g-Dr9"/>
                         </constraints>
                     </view>

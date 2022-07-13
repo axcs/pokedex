@@ -25,6 +25,8 @@
 		B45D197A287D9D4500E178CF /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45D1979287D9D4500E178CF /* AlertView.xib */; };
 		B45D1981287EFA2000E178CF /* UiLabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1980287EFA2000E178CF /* UiLabel+Extension.swift */; };
 		B45D1983287F070400E178CF /* UiView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1982287F070400E178CF /* UiView+Extension.swift */; };
+		B45D1989287F1B8B00E178CF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1988287F1B8B00E178CF /* AboutViewController.swift */; };
+		B45D198C287F254700E178CF /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D198B287F254700E178CF /* RadioButton.swift */; };
 		B476B71C2862FF010007A1DB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B71B2862FF010007A1DB /* HomeViewController.swift */; };
 		B476B7202862FF130007A1DB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B71E2862FF130007A1DB /* HomeModel.swift */; };
 		B476B7242862FF3C0007A1DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B7232862FF3C0007A1DB /* HomeViewModel.swift */; };
@@ -103,6 +105,8 @@
 		B45D1979287D9D4500E178CF /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		B45D1980287EFA2000E178CF /* UiLabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UiLabel+Extension.swift"; sourceTree = "<group>"; };
 		B45D1982287F070400E178CF /* UiView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extension.swift"; sourceTree = "<group>"; };
+		B45D1988287F1B8B00E178CF /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		B45D198B287F254700E178CF /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		B476B71B2862FF010007A1DB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B476B71E2862FF130007A1DB /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B476B7232862FF3C0007A1DB /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 		B437C9AF286205E600361D78 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				B45D1984287F1AFE00E178CF /* About */,
 				B4DE52E128636EDF00565563 /* DetailsPoke */,
 				B437C9B0286205EF00361D78 /* Home */,
 			);
@@ -261,6 +266,7 @@
 		B45D1976287D9C1A00E178CF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B45D198A287F252F00E178CF /* Button */,
 				B45D197C287DD4BD00E178CF /* AlertView */,
 				B476B73E28630A280007A1DB /* Cells */,
 			);
@@ -292,6 +298,30 @@
 				B437C9772861FA9800361D78 /* Home.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B45D1984287F1AFE00E178CF /* About */ = {
+			isa = PBXGroup;
+			children = (
+				B45D1985287F1B0F00E178CF /* View */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		B45D1985287F1B0F00E178CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B45D1988287F1B8B00E178CF /* AboutViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B45D198A287F252F00E178CF /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				B45D198B287F254700E178CF /* RadioButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		B476B71A2862FEED0007A1DB /* View */ = {
@@ -377,35 +407,35 @@
 		B4DE52E128636EDF00565563 /* DetailsPoke */ = {
 			isa = PBXGroup;
 			children = (
-				B4FF6D8B2864DC05008D16F9 /* ViewModels */,
-				B4FF6D8A2864DBFE008D16F9 /* Models */,
-				B4FF6D892864DBEE008D16F9 /* Controller */,
+				B4FF6D8B2864DC05008D16F9 /* ViewModel */,
+				B4FF6D8A2864DBFE008D16F9 /* Model */,
+				B4FF6D892864DBEE008D16F9 /* View */,
 			);
 			path = DetailsPoke;
 			sourceTree = "<group>";
 		};
-		B4FF6D892864DBEE008D16F9 /* Controller */ = {
+		B4FF6D892864DBEE008D16F9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B4DE52E228636F1900565563 /* DetailsPokeViewController.swift */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B4FF6D8A2864DBFE008D16F9 /* Models */ = {
+		B4FF6D8A2864DBFE008D16F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B4FF6D8C2864DCE3008D16F9 /* DetailsPokeModel.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		B4FF6D8B2864DC05008D16F9 /* ViewModels */ = {
+		B4FF6D8B2864DC05008D16F9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				B4DE52E42863787700565563 /* DetailsPokeViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,8 +707,10 @@
 				B45D1981287EFA2000E178CF /* UiLabel+Extension.swift in Sources */,
 				B476B74128630A280007A1DB /* PokeCollectionViewCell.swift in Sources */,
 				B4DE52E328636F1900565563 /* DetailsPokeViewController.swift in Sources */,
+				B45D1989287F1B8B00E178CF /* AboutViewController.swift in Sources */,
 				B4FF6D8D2864DCE3008D16F9 /* DetailsPokeModel.swift in Sources */,
 				B476B7382863031D0007A1DB /* ServiceManager.swift in Sources */,
+				B45D198C287F254700E178CF /* RadioButton.swift in Sources */,
 				B4DE52E92863A11D00565563 /* StatsViewCell.swift in Sources */,
 				B476B7352863031D0007A1DB /* CommonFavPokemonListModel.swift in Sources */,
 				B476B74828630DDF0007A1DB /* NSObject+Extension.swift in Sources */,
