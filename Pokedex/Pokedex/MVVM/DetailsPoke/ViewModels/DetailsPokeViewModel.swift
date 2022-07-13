@@ -39,9 +39,9 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
 
                 let numberObj = DescValueObj(desc: "detail_number".localized, value: auxModel.pokemon?.description ?? "")
                 pokemonObj.append(numberObj)
-                let weightObj = DescValueObj(desc: "detail_height".localized, value: auxModel.pokemon?.weight ?? "")
+                let weightObj = DescValueObj(desc: "detail_weight".localized, value: auxModel.pokemon?.weight ?? "")
                 pokemonObj.append(weightObj)
-                let heightObj = DescValueObj(desc: "detail_weight".localized, value: auxModel.pokemon?.height ?? "")
+                let heightObj = DescValueObj(desc: "detail_height".localized, value: auxModel.pokemon?.height ?? "")
                 pokemonObj.append(heightObj)
                 let typesObj = DescValueObj(desc: "detail_types".localized, value: auxModel.pokemon?.types ?? "")
                 pokemonObj.append(typesObj)
@@ -51,8 +51,13 @@ public class DetailsPokeViewModel: DetailsPokeViewModelProtocol {
                 self.serviceManager.getPokemonSpecies(pokemonID: idPoke) { responseSpecies, error in
                     if let responseSp = responseSpecies {
                         speciesData = SpeciesModelPokemon(cmumModel: responseSp)
-                        let typesObj = DescValueObj(desc: "detail_color".localized, value: speciesData?.color ?? "")
-                        pokemonObj.append(typesObj)
+                        
+                        let habitatObj = DescValueObj(desc: "detail_habitat".localized, value: speciesData?.habitat ?? "")
+                        pokemonObj.append(habitatObj)
+                        
+                        let colorObj = DescValueObj(desc: "detail_color".localized, value: speciesData?.color ?? "")
+                        pokemonObj.append(colorObj)
+                        
                         
                     }else {
                         self.error.value = error

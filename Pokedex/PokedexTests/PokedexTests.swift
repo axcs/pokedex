@@ -50,7 +50,7 @@ class PokedexTests: XCTestCase {
     func test_VM_saveFavorits() throws {
         let expectation = XCTestExpectation(description: "save favorits, send it for server")
         let viewModel = HomeViewModel()
-
+            // TODO: Reportar o erro
         viewModel.saveFavorits(id: "2")
 
         viewModel.saveFavoritsModel.bind { value in

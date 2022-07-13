@@ -13,6 +13,7 @@ class DetailsPokeViewController: ViewControllerUtil{
     @IBOutlet weak var nameTxt: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var statusTableView: UITableView!
+    @IBOutlet weak var logoBackground: UIView!
     
     //MARK: - Var
     private let STATS_CELL_IDENT = "statsViewCell"
@@ -53,6 +54,10 @@ class DetailsPokeViewController: ViewControllerUtil{
     
     func loadInfoForView(){
         //BTN_close Layout
+
+        
+        
+//        logoBackground.rotate()
         btnClose.layer.shadowColor = UIColor.black.cgColor
         btnClose.layer.shadowOffset = CGSize(width: 6, height: 10)
         btnClose.layer.shadowOpacity = 0.2
@@ -82,6 +87,7 @@ extension DetailsPokeViewController {
             DispatchQueue.main.async {
                 self.statusTableView.reloadData()
                 self.hideActivityIndicator()
+                self.logoBackground.rotate()
             }
         }
         
@@ -166,8 +172,14 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: INFO_CELL_IDENT, for: indexPath) as! InfoPokemonCell
-            cell.txtTitle = viewModel.sectionOneData.value?[indexPath.row].desc
+            let descAux = viewModel.sectionOneData.value?[indexPath.row].desc
+            cell.txtTitle = descAux
             cell.val1 = viewModel.sectionOneData.value?[indexPath.row].value
+            if (descAux == "detail_types".localized){
+                cell.val1Label.changeColor()
+            }
+            
+            
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: STATS_CELL_IDENT, for: indexPath) as! StatsViewCell

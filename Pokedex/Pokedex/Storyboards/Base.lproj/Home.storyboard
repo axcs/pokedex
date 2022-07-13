@@ -320,6 +320,7 @@
                     </view>
                     <connections>
                         <outlet property="btnClose" destination="QEg-zq-3SV" id="1Dg-fS-S4N"/>
+                        <outlet property="logoBackground" destination="oMe-r8-sb0" id="SF3-0k-BmW"/>
                         <outlet property="nameTxt" destination="ZJ3-5P-jHo" id="p7R-hl-5i8"/>
                         <outlet property="statusTableView" destination="iXX-gu-QMO" id="diW-k7-mrP"/>
                     </connections>

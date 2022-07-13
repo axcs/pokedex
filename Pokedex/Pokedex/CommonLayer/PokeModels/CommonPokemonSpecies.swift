@@ -9,20 +9,22 @@ import Foundation
 // MARK: - CommonPokemonSpecies
 class CommonPokemonSpecies: CommonDataBaseModel, Codable{
     
-    let color: ColorData?
+    let color: DataObj?
     let flavorTextEntries: [FlavorTextEntry]?
+    let habitat: DataObj?
     
     
     enum CodingKeys: String, CodingKey {
         
         case color = "color"
         case flavorTextEntries = "flavor_text_entries"
+        case habitat = "habitat"
         
     }
 }
 
-// MARK: - ColorData
-class ColorData: Codable {
+// MARK: - DataObj
+class DataObj: Codable {
     let name: String
     let url: String
     
@@ -36,7 +38,7 @@ class ColorData: Codable {
 // MARK: - FlavorTextEntry
 class FlavorTextEntry: Codable {
     let flavorText: String
-    let language, version: ColorData
+    let language, version: DataObj
     
     enum CodingKeys: String, CodingKey {
         case flavorText = "flavor_text"

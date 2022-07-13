@@ -8,8 +8,6 @@
 import Foundation
 import CoreLocation
 
-
-
 struct DetailsPokeModel {
     var pokemon : DetailsPokeModelPokemon?
 }
@@ -35,16 +33,23 @@ class DetailsPokeModelPokemon {
         
         let weightAux = Double(cmumModel.weight ?? 0)
         let heightAux = Double(cmumModel.height ?? 0)
- 
+        // TODO: remover unidades hardcode
+        let countryCode = NSLocale.current.regionCode
+        
+        
         self.height = "\(heightAux / 10.0) m"
         self.weight = "\(weightAux / 10.0) kg"
 
         self.stats = cmumModel.stats
         
         var typesAux: String = ""
+        var cont: Int = 1
         for item in cmumModel.types ?? [] {
             typesAux += (item.type?.name)?.firstCapitalized ?? ""
-            typesAux += "; "
+            if (cmumModel.types?.count ?? 0 > 1 && cont < cmumModel.types?.count ?? 0 ) {
+                typesAux += " / "
+            }
+            cont = cont + 1
         }
         self.types = typesAux
         
@@ -69,10 +74,11 @@ class AllPokeModelPokemon{
 class SpeciesModelPokemon {
     var color: String?
     var flavorText: String?
+    var habitat: String?
     
     init(cmumModel: CommonPokemonSpecies) {
         self.color = cmumModel.color?.name.firstCapitalized
-        
+        self.habitat = cmumModel.habitat?.name.firstCapitalized
         let flavorTextEntries = cmumModel.flavorTextEntries
         var flavorDesc = ""
         for flavor in flavorTextEntries ?? [] {

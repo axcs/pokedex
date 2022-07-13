@@ -23,6 +23,8 @@
 		B45D1975287D804000E178CF /* DynamicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1974287D804000E178CF /* DynamicType.swift */; };
 		B45D1978287D9C2900E178CF /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1977287D9C2900E178CF /* AlertView.swift */; };
 		B45D197A287D9D4500E178CF /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45D1979287D9D4500E178CF /* AlertView.xib */; };
+		B45D1981287EFA2000E178CF /* UiLabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1980287EFA2000E178CF /* UiLabel+Extension.swift */; };
+		B45D1983287F070400E178CF /* UiView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D1982287F070400E178CF /* UiView+Extension.swift */; };
 		B476B71C2862FF010007A1DB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B71B2862FF010007A1DB /* HomeViewController.swift */; };
 		B476B7202862FF130007A1DB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B71E2862FF130007A1DB /* HomeModel.swift */; };
 		B476B7242862FF3C0007A1DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476B7232862FF3C0007A1DB /* HomeViewModel.swift */; };
@@ -99,6 +101,8 @@
 		B45D1974287D804000E178CF /* DynamicType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicType.swift; sourceTree = "<group>"; };
 		B45D1977287D9C2900E178CF /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B45D1979287D9D4500E178CF /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		B45D1980287EFA2000E178CF /* UiLabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UiLabel+Extension.swift"; sourceTree = "<group>"; };
+		B45D1982287F070400E178CF /* UiView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extension.swift"; sourceTree = "<group>"; };
 		B476B71B2862FF010007A1DB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B476B71E2862FF130007A1DB /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B476B7232862FF3C0007A1DB /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 				B476B74428630DDF0007A1DB /* UICollectionView+Extension.swift */,
 				B4DE52F42864919300565563 /* ViewControllerUtil.swift */,
 				B4FF6D8E2865B167008D16F9 /* SelfSizedTableView.swift */,
+				B45D1980287EFA2000E178CF /* UiLabel+Extension.swift */,
+				B45D1982287F070400E178CF /* UiView+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -665,8 +671,10 @@
 				B437C9722861FA9800361D78 /* AppDelegate.swift in Sources */,
 				B476B7362863031D0007A1DB /* CommonSavePokemonModel.swift in Sources */,
 				B476B7322863031D0007A1DB /* BaseResponse.swift in Sources */,
+				B45D1983287F070400E178CF /* UiView+Extension.swift in Sources */,
 				B476B7372863031D0007A1DB /* CommonPokemonModel.swift in Sources */,
 				B476B74728630DDF0007A1DB /* UICollectionView+Extension.swift in Sources */,
+				B45D1981287EFA2000E178CF /* UiLabel+Extension.swift in Sources */,
 				B476B74128630A280007A1DB /* PokeCollectionViewCell.swift in Sources */,
 				B4DE52E328636F1900565563 /* DetailsPokeViewController.swift in Sources */,
 				B4FF6D8D2864DCE3008D16F9 /* DetailsPokeModel.swift in Sources */,

@@ -57,17 +57,17 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-ZA-pHb">
                                     <rect key="frame" x="20" y="50" width="260" height="20"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="textColorTitles"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messagemessagemessage messagemessagemessage messagemessagemessage messagemessagemessage messagemessagemessage" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSF-1V-CHJ">
                                     <rect key="frame" x="20" y="80" width="260" height="60"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="textColorNormal"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="backgroundHome"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="220" id="1zy-sR-DVa"/>
                                 <constraint firstItem="qQn-ZA-pHb" firstAttribute="leading" secondItem="715-6n-JpH" secondAttribute="leading" constant="20" id="3XN-Gl-KcH"/>
@@ -107,8 +107,17 @@
     </objects>
     <resources>
         <image name="success" width="64" height="64"/>
+        <namedColor name="backgroundHome">
+            <color red="0.95999997854232788" green="0.95499998331069946" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="success">
-            <color red="0.22699999809265137" green="0.75700002908706665" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.19215686274509802" green="0.68627450980392157" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColorNormal">
+            <color red="0.012000000104308128" green="0.012000000104308128" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColorTitles">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
