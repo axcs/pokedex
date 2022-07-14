@@ -31,10 +31,6 @@ class AboutViewController: ViewControllerUtil{
     }
     
     func initViewUI(){
-        //BTN_close Layout
-
- 
-        
         iconAppView.layer.cornerRadius = 21
         btnClose.layer.shadowColor = UIColor.black.cgColor
         btnClose.layer.shadowOffset = CGSize(width: 6, height: 10)
@@ -60,7 +56,7 @@ class AboutViewController: ViewControllerUtil{
     
     func loadValues() {
         let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "UseKG"){
+        if defaults.bool(forKey: USER_SETTINGS_WEIGHT){
             weightBtn1.isSelected = false
             weightBtn2.isSelected = true
         }
@@ -69,7 +65,7 @@ class AboutViewController: ViewControllerUtil{
             weightBtn2.isSelected = false
         }
         
-        if defaults.bool(forKey: "UseM"){
+        if defaults.bool(forKey: USER_SETTINGS_HEIGHT){
             heightBtn1.isSelected = false
             heightBtn2.isSelected = true
         }
@@ -85,24 +81,23 @@ class AboutViewController: ViewControllerUtil{
         dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func weightAction(_ sender: RadioButton) {
         let defaults = UserDefaults.standard
         if sender == weightBtn1{
-            defaults.set(false, forKey: "UseKG")
+            defaults.set(false, forKey: USER_SETTINGS_WEIGHT)
         }
         else {
-            defaults.set(true, forKey: "UseKG")
+            defaults.set(true, forKey: USER_SETTINGS_WEIGHT)
         }
     }
     
     @IBAction func heightAction(_ sender: RadioButton) {
         let defaults = UserDefaults.standard
         if sender == heightBtn1{
-            defaults.set(false, forKey: "UseM")
+            defaults.set(false, forKey: USER_SETTINGS_HEIGHT)
         }
         else {
-            defaults.set(true, forKey: "UseM")
+            defaults.set(true, forKey: USER_SETTINGS_HEIGHT)
         }
         
     }

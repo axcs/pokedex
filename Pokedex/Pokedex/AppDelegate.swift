@@ -8,6 +8,9 @@
 import UIKit
 import CoreData
 
+let USER_SETTINGS_WEIGHT = "UseKG"
+let USER_SETTINGS_HEIGHT = "UseM"
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

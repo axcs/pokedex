@@ -46,13 +46,13 @@ class DetailsPokeModelPokemon {
         self.stats = cmumModel.stats
         
         var typesAux: String = ""
-        var cont: Int = 1
+        var increment: Int = 1
         for item in cmumModel.types ?? [] {
             typesAux += (item.type?.name)?.firstCapitalized ?? ""
-            if (cmumModel.types?.count ?? 0 > 1 && cont < cmumModel.types?.count ?? 0 ) {
+            if (cmumModel.types?.count ?? 0 > 1 && increment < cmumModel.types?.count ?? 0 ) {
                 typesAux += " / "
             }
-            cont = cont + 1
+            increment = increment + 1
         }
         self.types = typesAux
         
@@ -67,7 +67,7 @@ class DetailsPokeModelPokemon {
     
     func getWeightConverted(_ weight: Double) -> String{
         let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "UseKG") {
+        if defaults.bool(forKey: USER_SETTINGS_WEIGHT) {
             return "\(weight / 10.0) \("detail_kg".localized)"
         }
         let formatValue: String = String(format: "%.1f", (weight * 0.22046))
@@ -78,7 +78,7 @@ class DetailsPokeModelPokemon {
     func getHeightConverted(_ height: Double) -> String{
        
         let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "UseM") {
+        if defaults.bool(forKey: USER_SETTINGS_HEIGHT) {
             return "\(height / 10.0) \("detail_m".localized)"
         }
         let formatValue: String = String(format: "%.1f", (height * 0.03280))
