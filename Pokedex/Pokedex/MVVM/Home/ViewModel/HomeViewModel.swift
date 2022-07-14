@@ -30,6 +30,10 @@ class HomeViewModel: HomeViewModelProtocol {
         
     }
 
+    /**
+     This Func  get list of pokemons
+     - The List is binding for model
+     */
     public func fetchAllPokemons(){
         var auxModel = HomeModel()
         let dispatchGroup = DispatchGroup() // Create  Dispatch Group
@@ -68,7 +72,10 @@ class HomeViewModel: HomeViewModelProtocol {
         
     }
     
-    
+    /**
+     This Func  get list of pokemons of next page
+     - The List is binding for model
+     */
     func fetchNextPagePokemons() {
         pageOffset += 10
         var auxModel = HomeModel()
@@ -109,6 +116,10 @@ class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
+    /**
+     This Func  save pokemon on server
+     - The response is binding for saveFavoritsModel
+     */
     func saveFavorits(id: String) {
         self.serviceManager.getPokemonByID(pokemonID: id) { response, error in
             if let response = response {

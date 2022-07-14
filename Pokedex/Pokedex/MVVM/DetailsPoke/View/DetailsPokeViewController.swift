@@ -19,8 +19,8 @@ class DetailsPokeViewController: ViewControllerUtil{
     private let STATS_CELL_IDENT = "statsViewCell"
     private let INFO_CELL_IDENT = "infoPokemonCell"
     private let HEADER_POKEMON_CELL_IDENT = "headerPokemonCell"
-    private let HEADER_INFO_CELL_IDENT = "headerInfoViewCell"
-    private let HEADER_STATS_CELL_IDENT = "headerStatsViewCell"
+    private let HEADER_INFO_CELL_IDENT = "section1Cell"
+    private let HEADER_STATS_CELL_IDENT = "section2Cell"
     
     private let viewModel = DetailsPokeViewModel()
     private var pokeID: String!
@@ -48,16 +48,16 @@ class DetailsPokeViewController: ViewControllerUtil{
         statusTableView.register(HeaderPokemonCell.self, forCellReuseIdentifier: HEADER_POKEMON_CELL_IDENT)
         statusTableView.register(StatsViewCell.self, forCellReuseIdentifier: STATS_CELL_IDENT)
         statusTableView.register(InfoPokemonCell.self, forCellReuseIdentifier: INFO_CELL_IDENT)
-     
-
+        statusTableView.register(Section1Cell.self, forCellReuseIdentifier: HEADER_INFO_CELL_IDENT)
+        statusTableView.register(Section2Cell.self, forCellReuseIdentifier: HEADER_STATS_CELL_IDENT)
     }
     
     func loadInfoForView(){
         //BTN_close Layout
-
         
         
-//        logoBackground.rotate()
+        
+        //        logoBackground.rotate()
         btnClose.layer.shadowColor = UIColor.black.cgColor
         btnClose.layer.shadowOffset = CGSize(width: 6, height: 10)
         btnClose.layer.shadowOpacity = 0.2
@@ -131,11 +131,11 @@ extension DetailsPokeViewController: UITableViewDataSource, UITableViewDelegate 
             lb.text = ""
             return lb
         case 1:
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: HEADER_INFO_CELL_IDENT)
-            return headerCell
+            let header = tableView.dequeueReusableCell(withIdentifier: HEADER_STATS_CELL_IDENT) as! Section2Cell
+            return header
         case 2:
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: HEADER_STATS_CELL_IDENT)
-            return headerCell
+            let header = tableView.dequeueReusableCell(withIdentifier: HEADER_INFO_CELL_IDENT) as! Section1Cell
+            return header
         default:
             let lb = UILabel()
             lb.text = ""

@@ -23,6 +23,10 @@
 "detail_types" = "Types";
 "detail_color" = "Color";
 "detail_habitat" = "Habitat";
+"detail_stats" = "Stats";
+"detail_base" = "Base";
+"detail_effort" = "Effort";
+"detail_details" = "Details";
 "detail_kg" = "kg";
 "detail_lb" = "lbs";
 "detail_m" = "m";

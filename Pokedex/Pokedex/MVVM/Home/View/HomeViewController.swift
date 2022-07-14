@@ -13,8 +13,8 @@ class HomeViewController: ViewControllerUtil {
     @IBOutlet weak var homeTitleLB: UILabel!
 
     //MARK: - Var
-    private let DETAILS_VIEWCONTROL_IDENT = "detailsPokeViewController"
-    private let ABOUT_VIEWCONTROL_IDENT = "aboutViewController"
+    private let DETAILS_VIEWCONTROL_IDENT = "DetailsPokeViewController"
+    private let ABOUT_VIEWCONTROL_IDENT = "AboutViewController"
     private let viewModel = HomeViewModel()
     
     
@@ -38,10 +38,8 @@ class HomeViewController: ViewControllerUtil {
     }
     
     @IBAction func aboutButtonAction(_ sender: Any) {
-        // TODO: retirar storyboard
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: ABOUT_VIEWCONTROL_IDENT) as! AboutViewController
-        self.present(vc, animated: true)
+        let myViewController = AboutViewController(nibName: ABOUT_VIEWCONTROL_IDENT, bundle: nil)
+        self.present(myViewController, animated: true, completion: nil)
     }
 }
 
@@ -99,12 +97,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+       
         let pokemon = viewModel.model.value?.listPokemons[indexPath.row]
-        let vc = storyboard.instantiateViewController(withIdentifier: DETAILS_VIEWCONTROL_IDENT) as! DetailsPokeViewController
+
+        let vc = DetailsPokeViewController(nibName: DETAILS_VIEWCONTROL_IDENT, bundle: nil)
         vc.idP = pokemon?.numPoke
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
+        
+   
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{

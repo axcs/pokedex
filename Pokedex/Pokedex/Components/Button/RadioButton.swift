@@ -40,10 +40,10 @@ class RadioButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.borderColor = UIColor.red.cgColor
-                self.backgroundColor = UIColor.red
-            } else {
                 self.layer.borderColor = UIColor.black.cgColor
+                self.backgroundColor = UIColor(named: "btnSelect")
+            } else {
+                self.layer.borderColor = UIColor.gray.cgColor
                 self.backgroundColor = UIColor.lightGray
             }
         }
