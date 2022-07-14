@@ -31,9 +31,6 @@ class HomeModelPokemonList {
 
 }
 
-
-
-
 class HomeModelPokemonModel {
     var id : String?
     var description : String?

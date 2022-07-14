@@ -81,6 +81,20 @@ class PokedexTests: XCTestCase {
         wait(for: [expectation], timeout: 3)
     }
     
+    func test_Save_for_USER_DEFAULTS() throws {
+        let expectation = XCTestExpectation(description: "Checks if unit conversions are correct")
+        let defaults = UserDefaults.standard
+        
+        defaults.set(true, forKey: USER_SETTINGS_WEIGHT)
+        defaults.set(true, forKey: USER_SETTINGS_HEIGHT)
+        
+        XCTAssert(defaults.bool(forKey: USER_SETTINGS_WEIGHT) == true)
+        XCTAssert(defaults.bool(forKey: USER_SETTINGS_HEIGHT) == true)
+
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 3)
+    }
+    
     func test_Bussi_ConvertUnits() throws {
         let expectation = XCTestExpectation(description: "Checks if unit conversions are correct")
         let defaults = UserDefaults.standard
